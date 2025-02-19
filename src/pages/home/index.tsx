@@ -5,7 +5,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import * as css from "./index.css";
 import { ReportCard } from "../../components/reportCard";
 
-export function Home() {
+export function HomePage() {
   const setLocation = useSetRecoilState(locationCoords);
   const curretLocation = useRecoilValue(locationCoords);
   const locationHandler = (e) => {

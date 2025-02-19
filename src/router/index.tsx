@@ -1,33 +1,33 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "../components/Layout";
-import { Home } from "../pages/home";
-import { LogIn } from "../components/auth/LogIn";
-import { CreateReport } from "../components/reports/create";
-import { EditReport } from "../components/reports/edit";
-import { MyReps } from "../components/reports/myReps";
-import { Menu } from "../components/profile/Menu";
-import { MyData } from "../components/profile/MyData";
-import { Password } from "../components/profile/Password";
+import { HomePage } from "../pages/home";
 import { SignIn } from "../components/auth/SignIn";
 import { SignUp } from "../components/auth/SignUp";
-import { Cards } from "../pages/cards";
+import { CardsPage } from "../pages/cards";
+import { LogInPage } from "../pages/login";
+import { MyDataPage } from "../pages/my-data/modify-data";
+import { MenuPage } from "../pages/my-data/menu";
+import { EditRepsPage } from "../pages/edit-report";
+import { CreateRepsPage } from "../pages/create-report";
+import { PasswordPage } from "../pages/my-data/modify-password";
+import { MyRepsPage } from "../pages/my-reports";
 
 export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="cards" element={<Cards />} />
-        <Route path="log-in" element={<LogIn />} />
+        <Route index element={<HomePage />} />
+        <Route path="cards" element={<CardsPage />} />
+        <Route path="log-in" element={<LogInPage />} />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
-        <Route path="create-report" element={<CreateReport />} />
-        <Route path="edit-report" element={<EditReport />} />
-        <Route path="my-reports" element={<MyReps />} />
-        <Route path="my-data/menu" element={<Menu />} />
-        <Route path="my-data/modify-data" element={<MyData />} />
-        <Route path="my-data/modify-password" element={<Password />} />
+        <Route path="create-report" element={<CreateRepsPage />} />
+        <Route path="edit-report" element={<EditRepsPage />} />
+        <Route path="my-reports" element={<MyRepsPage />} />
+        <Route path="my-data/menu" element={<MenuPage />} />
+        <Route path="my-data/modify-data" element={<MyDataPage />} />
+        <Route path="my-data/modify-password" element={<PasswordPage />} />
       </Route>
     </Routes>
   );

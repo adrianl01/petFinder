@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
 export const MyContext = React.createContext({ username: "" });
-
 function App() {
   return (
     <RecoilRoot>
