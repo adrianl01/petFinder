@@ -1,0 +1,159 @@
+.main {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 60px;
+    align-items: center;
+    gap: 10px
+}
+
+.title {
+    width: 100%;
+    height: 100%;
+    font-family: Poppins;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 54px;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.title2 {
+    width: 100%;
+    height: 45px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.75px;
+    text-align: center;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+    padding: 0 15px 20px;
+}
+
+.textfield {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: none;
+    padding: 0;
+    gap: 15px;
+    align-items: center;
+}
+
+.formEmailLabel {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.imgIngresarContainer,
+.mapContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.mapContainer {
+    display: flex;
+    align-items: center;
+}
+
+.imgIngresar {
+    height: 180px;
+}
+
+.name,
+.search {
+    width: 100%;
+    height: 50px;
+}
+
+.atentionText {
+    display: none;
+    color: red;
+    font-size: 10px;
+    margin: 0;
+}
+
+.formButtonSubmit,
+.formButtonCancel,
+.form-button-delete,
+.form-button-save {
+    height: 50px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 168, 132, 1);
+    border: none;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.form-button-save {
+    background-color: rgba(90, 143, 236, 1);
+}
+
+.formButtonCancel {
+    background-color: rgba(74, 85, 83, 1);
+}
+
+.form-button-delete {
+    background-color: rgba(235, 99, 114, 1);
+}
+
+.register-container,
+.forgot-container,
+.login-container,
+.map-container {
+    padding-top: 38px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.75px;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+}
+
+.mapContainer {
+    border: solid 2px black
+}
+
+.register-container {
+    display: flex;
+    align-items: end;
+}
+
+.forgot-container {
+    padding: 0;
+}
+
+.register-container-button,
+.forgot-container-button,
+.login-container-button {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.75px;
+    text-align: left;
+    color: rgba(90, 143, 236, 1);
+    border: none;
+    background-color: transparent;
+}

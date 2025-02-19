@@ -1,0 +1,149 @@
+.header-el {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+
+.absolute {
+    display: flex;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.headerMenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(38, 48, 46, 1);
+    color: white;
+}
+
+.headerMenuNone {
+    display: none;
+}
+
+.headerMenuTop {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    justify-content: space-between;
+}
+
+.headerMenuBottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding-bottom: 20px;
+    height: 30%;
+    gap: 15px;
+}
+
+.headerMenuCloseButtonContainer {
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+}
+
+.headerMenuCloseButton {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.headerMenuCloseButton::active {
+    .header-menu {
+        display: none;
+    }
+}
+
+.headerMenuCloseButtonImg {
+    background-color: transparent;
+}
+
+.headerMenuButtonData,
+.headerMenuButtonMyReports,
+.headerMenuButtonCreateReport {
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.headerMenuEmail {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.headerMenuCancelButton {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18.75px;
+    text-align: center;
+    color: rgba(59, 151, 211, 1);
+    background-color: transparent;
+    border: none;
+}
+
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: rgba(38, 48, 46, 1);
+    border-radius: 0px 0px 4px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 17px;
+    padding-right: 17px;
+}
+
+.logoButton {
+    background: transparent;
+    border: none;
+}
+
+.imgLogo {
+    width: 40px;
+    height: 40px;
+}
+
+.buttonMenu {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.buttonMenu::active {
+    .header-menu {
+        display: flex;
+    }
+}
+
+.vector {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 1);
+    align-items: center;
+}

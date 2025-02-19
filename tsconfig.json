@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "outDir": "dist",
+        "esModuleInterop": true,
+        "module": "NodeNext",
+        "moduleResolution":"NodeNext",
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true
+    },
+    "include": ["src/**/*.*"],
+}
