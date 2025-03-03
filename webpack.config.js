@@ -1,7 +1,7 @@
 const dotenv = require('dotenv')
 const path = require('path');
 const liveServer = require('live-server');
-const { webpack, ProvidePlugin, DefinePlugin } = require('webpack');
+const { DefinePlugin } = require('webpack');
 dotenv.config();
 const dev = process.env.NODE_ENV == "development"
 if (dev) {
@@ -45,4 +45,3 @@ module.exports = {
         filename: "bundle.js",
     },
 }
-console.log("webpack")
