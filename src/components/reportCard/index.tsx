@@ -71,7 +71,7 @@ export function ReportCard(prop) {
                 className={css.reportButtonEdit}
               >
                 Reportar
-                <img src="../public/imgs/siren.png" />
+                <img src="/imgs/siren.png" />
               </button>
             </div>
           </div>
@@ -91,10 +91,7 @@ export function ReportCard(prop) {
               className={css.windowCloseButton}
               type="button"
             >
-              <img
-                className="header-menu-close-button-img"
-                src="../public/imgs/x.png"
-              />
+              <img className="header-menu-close-button-img" src="/imgs/x.png" />
             </button>
           </div>
           <h2 id="petNameEl" className={css.windowTitle}></h2>

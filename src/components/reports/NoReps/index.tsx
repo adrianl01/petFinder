@@ -13,10 +13,7 @@ export function NoReps() {
 
       <div className={css.emptyReportContainer}>
         <h4 className={css.title2}>Aún no reportaste mascotas perdidas</h4>
-        <img
-          className={css.emptyReportImg}
-          src="../public/imgs/create-report.png"
-        />
+        <img className={css.emptyReportImg} src="/imgs/create-report.png" />
         <button
           type="button"
           className={css.emptyReportButton}

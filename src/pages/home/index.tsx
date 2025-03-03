@@ -19,7 +19,7 @@ export function HomePage() {
   if (curretLocation == null) {
     return (
       <div className={css.main}>
-        <img src="../public/imgs/home.png" className={css.homeImg} />
+        <img src="/imgs/home.png" className={css.homeImg} />
         <div>
           <h2 className={css.homeTitle}>Pet Finder App</h2>
           <h4 className={css.homeTitle2}>

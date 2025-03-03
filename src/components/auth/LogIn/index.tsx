@@ -5,7 +5,7 @@ export function LogIn() {
   return (
     <div className={css.main}>
       <div className={css.imgIngresarContainer}>
-        <img className="img-ingresar" src="../public/imgs/door.png" />
+        <img className="img-ingresar" src="/imgs/door.png" />
       </div>
       <h2 className={css.title}>Ingresar</h2>
       <h4 className={css.title2}>Ingresá tu email para continuar</h4>

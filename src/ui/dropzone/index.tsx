@@ -23,7 +23,7 @@ export function MyDropzone(prop) {
           <img
             id="imgIng"
             className={prop.imgIngresar}
-            src="../public/imgs/insert-photo.png"
+            src="/imgs/insert-photo.png"
           />
           <p>Drag 'n' drop some files here, or click to select files</p>
         </div>

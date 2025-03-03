@@ -60,7 +60,7 @@ export function Header() {
             className={css.logoButton}
             onClick={handleClickHome}
           >
-            <img className={css.imgLogo} src="../public/imgs/pet-logo.png" />
+            <img className={css.imgLogo} src="/imgs/pet-logo.png" />
           </button>
         </div>
         <button
@@ -83,7 +83,7 @@ export function Header() {
             >
               <img
                 className={css.headerMenuCloseButtonImg}
-                src="../public/imgs/x.png"
+                src="./imgs/x.png"
               />
             </button>
           </div>
