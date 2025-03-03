@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { resultsState, queryState, locationCoords, resLocation, geoCodeAtom, userEmail } from "../atoms";
+import { useEffect } from "react";
+import { resultsState, queryState, locationCoords, resLocation, geoSearchAtom, userEmail } from "../atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import { useParams } from "react-router-dom";
 

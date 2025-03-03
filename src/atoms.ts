@@ -9,7 +9,7 @@ export const locationCoords = atom({
     key: "location",
     default: null
 })
-export const geoCodeAtom = atom({
+export const geoSearchAtom = atom({
     key: "geoCode",
     default: ""
 })
@@ -22,17 +22,17 @@ export const userEmail = atom({
     key: "userEmail",
     default: null
 })
-export const langLatReport = atom({
-    key: "langLatReport",
+export const longLatReport = atom({
+    key: "longLatReport",
     default: null
 })
 
 export const resultsState = selector({
-    key: 'charCountState',
+    key: 'geoSearch',
     get: async ({ get }) => {
         // const user = get(userState);
         console.log("apiRes")
-        const val = get(geoCodeAtom)
+        const val = get(geoSearchAtom)
         if (val) {
             const res = await <any>fetch("https://api.mapbox.com/search/geocode/v6/forward?q=" + val + "&" + "access_token=pk.eyJ1IjoiYWRyaWFubGVpdmExIiwiYSI6ImNsdW5qOTBmYzFubmMydm8xNzd1aGM0MzUifQ.XKlAT89VnNSAFVho6Ztetw")
             const data = await res.json();
@@ -48,7 +48,7 @@ export const resLocation = selector({
     key: 'resLocation',
     get: async ({ get }) => {
         // const user = get(userState);
-        const val = get(geoCodeAtom)
+        const val = get(geoSearchAtom)
         if (val) {
             console.log("selector val", val)
             const geocodingCore = await useGeocodingCore({ accessToken: "pk.eyJ1IjoiYWRyaWFubGVpdmExIiwiYSI6ImNsdW5qOTBmYzFubmMydm8xNzd1aGM0MzUifQ.XKlAT89VnNSAFVho6Ztetw" });
@@ -60,20 +60,21 @@ export const resLocation = selector({
         } else { return [] }
     }
 })
-export const langLatGeoCoding = selector({
+export const longLatGeoCoding = selector({
     key: 'charCountState',
     get: async ({ get }) => {
         // const user = get(userState);
         console.log("apiRes")
-        const val = get(langLatReport)
+        const val = get(longLatReport)
         if (val) {
-            const res = await <any>fetch("https://api.mapbox.com/search/geocode/v6/reverse?longitude={longitude}&latitude={latitude}" + "&" + "access_token=pk.eyJ1IjoiYWRyaWFubGVpdmExIiwiYSI6ImNsdW5qOTBmYzFubmMydm8xNzd1aGM0MzUifQ.XKlAT89VnNSAFVho6Ztetw")
-            const data = await res.json();
-            // console.log(data.features[0].map((d) => {
-            //     console.log(d.properties.full_address)
-            // }))
-            console.log(data.features[0].properties.coordinates)
-            return data.features[0].properties.coordinates;
+            //     const res = await <any>fetch("https://api.mapbox.com/search/geocode/v6/reverse?longitude="+val.+"&latitude={latitude}" + "&" + "access_token=pk.eyJ1IjoiYWRyaWFubGVpdmExIiwiYSI6ImNsdW5qOTBmYzFubmMydm8xNzd1aGM0MzUifQ.XKlAT89VnNSAFVho6Ztetw")
+            //     const data = await res.json();
+            //     // console.log(data.features[0].map((d) => {
+            //     //     console.log(d.properties.full_address)
+            //     // }))
+            //     console.log(data.features[0].properties.coordinates)
+            //     return data.features[0].properties.coordinates;
+            return "ok"
         } else { return null }
     }
 })

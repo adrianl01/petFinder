@@ -1,9 +1,10 @@
-import { PositionOptions } from "mapbox-gl";
 import * as React from "react";
 import Map, { Marker } from "react-map-gl";
 import { useSetRecoilState } from "recoil";
-import { langLatReport } from "../../atoms";
+import { longLatReport } from "../../atoms";
+
 export function MapApp(prop) {
+  const setLongLat = useSetRecoilState(longLatReport);
   const res = prop.coords();
   const data = prop.newLoc;
   var loc = res;
@@ -12,8 +13,7 @@ export function MapApp(prop) {
   }
   const handler = (e) => {
     console.log(e.lngLat);
-    const setLangLat = useSetRecoilState(langLatReport);
-    setLangLat(e.lngLat);
+    setLongLat(e.lngLat);
   };
   return (
     <div className={prop.class}>
@@ -26,6 +26,8 @@ export function MapApp(prop) {
         }}
         onClick={handler}
         touchZoomRotate={true}
+        scrollZoom={true}
+        interactive={true}
         longitude={loc.longitude}
         latitude={loc.latitude}
         style={{ width: 340.3, height: 205 }}
@@ -34,7 +36,8 @@ export function MapApp(prop) {
         <Marker
           longitude={loc.longitude}
           latitude={loc.latitude}
-          anchor="bottom"
+          anchor="center"
+          scale={1}
         >
           <img src="../../../imgs/pin.webp" />
         </Marker>

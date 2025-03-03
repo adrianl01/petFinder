@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from "react";
-
+import React from "react";
 import * as css from "./index.css";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { geoCodeAtom, locationCoords } from "../../../atoms";
-import { MapApp } from "../../map";
+import { useSetRecoilState } from "recoil";
+import { geoSearchAtom } from "../../../atoms";
 import { useForm } from "react-hook-form";
 import { geoCode } from "../../../hooks";
 import { Previews } from "../../../ui/previews";
 import { useNavigate } from "react-router-dom";
+import NewMapApp from "../../map/map";
 
 export function CreateReport() {
-  const setGeoCodeAtom = useSetRecoilState(geoCodeAtom);
+  const setGeoCodeAtom = useSetRecoilState(geoSearchAtom);
   const geoCodedata = geoCode();
   const navigate = useNavigate();
   const handleClickCancel = (e) => {
     navigate("/", { replace: true });
   };
 
-  const coords = () => {
-    const res = useRecoilValue(locationCoords) as any;
-    return res;
-  };
   const {
     register,
     handleSubmit,
@@ -49,6 +44,7 @@ export function CreateReport() {
       <h4 className={css.title2}>
         Ingresá la siguiente info para reportar a una mascota perdida
       </h4>
+
       <form
         className={css.form}
         method="post"
@@ -72,11 +68,12 @@ export function CreateReport() {
           </div>
         </fieldset>
         <fieldset className={css.textfield}>
-          <MapApp
+          <NewMapApp class={css.mapContainer} newLoc={geoCodedata} />
+          {/* <MapApp
             class={css.mapContainer}
             coords={coords}
             newLoc={geoCodedata}
-          />
+          /> */}
           <h4 className={css.title2}>
             Buscá un punto de referencia para reportar la mascota. Por ejemplo,
             la ubicación donde lo viste por última vez.

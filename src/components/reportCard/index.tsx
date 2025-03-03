@@ -48,32 +48,41 @@ export function ReportCard(prop) {
     const windowRep = document.getElementById("windowRep");
     windowRep.style.display = "none";
   };
+
+  function Reps(data) {
+    return (
+      <>
+        {" "}
+        {data.petData.map((d) => (
+          <div className={css.reportContainer} id={d.nombre}>
+            <div className={css.reportImg}>
+              <img className={css.reportProfileImg} src={d.img} />
+            </div>
+            <div className={css.reportBox}>
+              <div className={css.reportInfo}>
+                <h2 key={d.nombre} className={css.reportTitle}>
+                  {d.nombre}
+                </h2>
+                <h4 className={css.reportLocation}>{d.location}</h4>
+              </div>
+              <button
+                type="button"
+                onClick={clickHandler}
+                className={css.reportButtonEdit}
+              >
+                Reportar
+                <img src="../imgs/siren.png" />
+              </button>
+            </div>
+          </div>
+        ))}
+      </>
+    );
+  }
   return (
     <div className={css.homeEl}>
       <h4 className={css.reportsTitle}>Mascotas Perdidas Cerca</h4>
-      {data.map((d) => (
-        <div className={css.reportContainer}>
-          <div className={css.reportImg}>
-            <img className={css.reportProfileImg} src={d.img} />
-          </div>
-          <div className={css.reportBox}>
-            <div className={css.reportInfo}>
-              <h2 key={d.nombre} className={css.reportTitle}>
-                {d.nombre}
-              </h2>
-              <h4 className={css.reportLocation}>{d.location}</h4>
-            </div>
-            <button
-              type="button"
-              onClick={clickHandler}
-              className={css.reportButtonEdit}
-            >
-              Reportar
-              <img src="../imgs/siren.png" />
-            </button>
-          </div>
-        </div>
-      ))}
+      <Reps petData={data} />
       <div id="windowRep" className={css.windowAbsolute}>
         <div className={css.windowContainer}>
           <div className={css.windowCloseButtonContainer}>

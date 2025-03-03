@@ -2,7 +2,7 @@ import React from "react";
 import * as css from "./header.css";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { geoCodeAtom, locationCoords } from "../../atoms";
+import { locationCoords } from "../../atoms";
 import { EmailButton } from "../../ui/emailButton";
 import { logInCheck } from "../../hooks";
 export function Header() {

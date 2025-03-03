@@ -133,7 +133,7 @@
     padding: 0;
 }
 
-.buttonMenu::active {
+.buttonMenu:active {
     .header-menu {
         display: flex;
     }

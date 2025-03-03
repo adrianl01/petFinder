@@ -11,11 +11,7 @@ export function HomePage() {
   const locationHandler = (e) => {
     e.preventDefault();
     const success = (position) => {
-      const location = {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      };
-      console.log(location);
+      const location = [position.coords.longitude, position.coords.latitude];
       setLocation(location);
     };
     navigator.geolocation.getCurrentPosition(success);
