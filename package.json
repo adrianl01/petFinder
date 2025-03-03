@@ -8,6 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "start": "live-server"
   },
+  "source": "index.html",
   "devDependencies": {
     "@types/express": "^4.17.21",
     "css-loader": "^7.1.2",
