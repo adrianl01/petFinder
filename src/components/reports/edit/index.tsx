@@ -13,7 +13,10 @@ export function EditReport() {
             <input type="name" className={css.name} name="name" id="name" />
           </label>
           <div className={css.imgIngresarContainer}>
-            <img className={css.imgIngresar} src="../imgs/insert-photo.png" />
+            <img
+              className={css.imgIngresar}
+              src="../public/imgs/insert-photo.png"
+            />
           </div>
         </fieldset>
 

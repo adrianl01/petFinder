@@ -34,7 +34,7 @@ export function MyReps() {
               </div>
               <button type="button" className={css.reportButtonEdit}>
                 Editar
-                <img src="../imgs/pencil.png" />
+                <img src="../public/imgs/pencil.png" />
               </button>
             </div>
           </div>

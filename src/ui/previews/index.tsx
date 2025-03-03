@@ -55,7 +55,7 @@ export function Previews(props) {
           <img
             id="imgIng"
             className={props.imgIngresar}
-            src="../imgs/insert-photo.png"
+            src="../public/imgs/insert-photo.png"
           />
           <p>Drag 'n' drop some files here, or click to select files</p>
         </div>

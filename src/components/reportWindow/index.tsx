@@ -30,7 +30,10 @@ export function ReportWindow(prop) {
             className={css.windowCloseButton}
             type="button"
           >
-            <img className="header-menu-close-button-img" src="../imgs/x.png" />
+            <img
+              className="header-menu-close-button-img"
+              src="../public/imgs/x.png"
+            />
           </button>
         </div>
         <h2 className={css.windowTitle}>Reportar info de {params.petName}</h2>

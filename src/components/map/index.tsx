@@ -39,7 +39,7 @@ export function MapApp(prop) {
           anchor="center"
           scale={1}
         >
-          <img src="../../../imgs/pin.webp" />
+          <img src="../../../public/imgs/pin.webp" />
         </Marker>
       </Map>
     </div>
