@@ -3,8 +3,9 @@ const path = require('path');
 const liveServer = require('live-server');
 const { DefinePlugin } = require('webpack');
 dotenv.config();
-const dev = process.env.NODE_ENV == "development"
+const dev = process.env.NODE_ENV == "production"
 if (dev) {
+    console.log("dev live-server")
     liveServer.start({
         root: "./dist/",
         file: "index.html"

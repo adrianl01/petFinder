@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack",
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "live-server"
+    "build": "webpack",
+    "start": "cross-env NODE_ENV=production webpack"
   },
   "source": "index.html",
   "devDependencies": {
