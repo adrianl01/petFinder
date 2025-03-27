@@ -10,16 +10,6 @@ export function SignIn() {
   const setEmailState = useSetRecoilState(userEmail);
   const setPasswordState = useSetRecoilState(userPassword);
   const setToken = useSetRecoilState(tokenAtom);
-  // const token = getUserToken();
-  // useEffect(() => {
-  //   console.log("useEffect");
-  //   console.log(token);
-  //   if (token) {
-  //     setToken(token);
-  //     navigate("/", { replace: true });
-  //   }
-  // });
-
   const {
     register,
     handleSubmit,
@@ -30,7 +20,8 @@ export function SignIn() {
     setEmailState({ email: data.email });
     setPasswordState({ password: data.password });
     const res = await getToken(data);
-    console.log(res);
+    setToken(res);
+    navigate("/", { replace: true });
   };
   return (
     <div className={css.mainContainer}>
