@@ -8,7 +8,7 @@ export const MyContext = React.createContext({ username: "" });
 function App() {
   return (
     <RecoilRoot>
-      <Suspense fallback={null}>
+      <Suspense fallback={<div>Cargando...</div>}>
         <BrowserRouter>
           <AppRoutes />
         </BrowserRouter>

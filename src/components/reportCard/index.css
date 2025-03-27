@@ -176,6 +176,8 @@
     border-radius: 4px;
     background-color: rgba(74, 85, 83, 1);
     border: none;
+    color: white;
+    font-size: large;
 }
 
 .windowInputLocation {

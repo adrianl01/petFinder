@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as css from "./index.css";
-import { useSetRecoilState } from "recoil";
-import { geoSearchAtom } from "../../../atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
-import { geoCode } from "../../../hooks";
 import { Previews } from "../../../ui/previews";
 import { useNavigate } from "react-router-dom";
 import NewMapApp from "../../map/map";
+import {
+  createRep,
+  imgInfo,
+  longLatReport,
+  newReportInfo,
+  uploadImage,
+} from "../../../atoms";
+import { getUserEmail } from "../../../hooks";
 
 export function CreateReport() {
-  const setGeoCodeAtom = useSetRecoilState(geoSearchAtom);
-  const geoCodedata = geoCode();
+  const petLoc = useRecoilValue(longLatReport);
+  const setNewRepInfo = useSetRecoilState(newReportInfo);
+  const imgInfoAtom = useRecoilValue(imgInfo);
+  const newRepAtom = useRecoilValue(newReportInfo);
+  const newRep = useRecoilValue(createRep);
+  const userEmail = getUserEmail();
   const navigate = useNavigate();
-  const handleClickCancel = (e) => {
-    navigate("/", { replace: true });
-  };
+
+  useEffect(() => {
+    console.log("newRep", newRep);
+  }, [newRepAtom]);
 
   const {
     register,
@@ -22,9 +33,19 @@ export function CreateReport() {
     watch,
     formState: { errors },
   } = useForm();
-  const handlerSubmit = (data) => {
-    setGeoCodeAtom(data.location);
-    console.log(data);
+  const handlerSubmit = async (data) => {
+    const res = await uploadImage(imgInfoAtom);
+    const reportInfo = {
+      petName: data.name,
+      location: data.location,
+      lat: petLoc.lat,
+      long: petLoc.long,
+      petImg: res,
+      email: userEmail.email,
+    };
+    console.log(reportInfo);
+    await setNewRepInfo(reportInfo);
+
     console.log("hacer cartel que diga que se creó el reporte");
     navigate("/", { replace: true });
   };
@@ -44,7 +65,6 @@ export function CreateReport() {
       <h4 className={css.title2}>
         Ingresá la siguiente info para reportar a una mascota perdida
       </h4>
-
       <form
         className={css.form}
         method="post"
@@ -56,37 +76,41 @@ export function CreateReport() {
             <input
               type="name"
               className={css.name}
-              {...register("name")}
+              {...register("name", { required: true })}
               id="name"
             />
+            {errors.exampleRequired && <span>This field is required</span>}
             <p id="atentionText" className={css.atentionText}>
               El nombre no puede superar los 15 caractéres
             </p>
           </label>
+        </fieldset>
+        <fieldset className={css.textfield}>
           <div className={css.imgIngresarContainer}>
             <Previews imgIngresar={css.imgIngresar} />
           </div>
         </fieldset>
         <fieldset className={css.textfield}>
-          <NewMapApp class={css.mapContainer} newLoc={geoCodedata} />
-          {/* <MapApp
-            class={css.mapContainer}
-            coords={coords}
-            newLoc={geoCodedata}
-          /> */}
+          <NewMapApp class={css.mapContainer} />
           <h4 className={css.title2}>
             Buscá un punto de referencia para reportar la mascota. Por ejemplo,
             la ubicación donde lo viste por última vez.
           </h4>
+        </fieldset>
+        <fieldset className={css.textfield}>
           <label className={css.formEmailLabel}>
             UBICACIÓN
             <input
               type="search"
               className={css.search}
-              {...register("location")}
+              {...register("location", { required: true })}
               id="search"
             />
+            {errors.exampleRequired && <span>This field is required</span>}
           </label>
+          <h4 className={css.title2}>
+            Escribí el nombre de la ciudad donde se perdió
+          </h4>
         </fieldset>
         <button type="submit" className={css.formButtonSubmit}>
           Reportar Mascota
@@ -94,7 +118,7 @@ export function CreateReport() {
         <button
           type="button"
           className={css.formButtonCancel}
-          onClick={handleClickCancel}
+          onClick={() => navigate("/", { replace: true })}
         >
           Cancelar
         </button>

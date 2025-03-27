@@ -23,7 +23,7 @@ export function AppRoutes() {
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="create-report" element={<CreateRepsPage />} />
-        <Route path="edit-report" element={<EditRepsPage />} />
+        <Route path="edit-report/:repId" element={<EditRepsPage />} />
         <Route path="my-reports" element={<MyRepsPage />} />
         <Route path="my-data/menu" element={<MenuPage />} />
         <Route path="my-data/modify-data" element={<MyDataPage />} />

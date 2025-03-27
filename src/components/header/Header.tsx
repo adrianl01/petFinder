@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import * as css from "./header.css";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { locationCoords } from "../../atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { atentionCard, locationCoords, tokenAtom } from "../../atoms";
 import { EmailButton } from "../../ui/emailButton";
-import { logInCheck } from "../../hooks";
+import { AtentionCard } from "./atentionCard";
+import { getUserEmail } from "../../hooks";
+import Location from "./location";
 export function Header() {
-  const locationCoordsAt = useRecoilValue(locationCoords);
+  const currentLoc = useRecoilValue(locationCoords);
+  const token = useRecoilValue(tokenAtom);
+  const atentionCardAtom = useRecoilValue(atentionCard);
+  const setAtentionCard = useSetRecoilState(atentionCard);
+  const userEmail = getUserEmail();
 
   const navigate = useNavigate();
   const handleClickOpenButton = (e) => {
@@ -22,35 +28,38 @@ export function Header() {
   const handleClickCreateRep = (e) => {
     e.preventDefault();
     const headerMenu = document.getElementById("headerMenu");
-    if (locationCoordsAt) {
-      console.log("locationCoords", locationCoordsAt);
+    if (currentLoc && userEmail) {
       headerMenu.style.display = "none";
       navigate("/create-report", { replace: true });
-      console.log("createReports");
     } else {
-      console.error("No coordinates");
+      setAtentionCard(true);
+      console.error("No coordinates or Email");
     }
   };
   const handleClickMyReps = (e) => {
     e.preventDefault();
     const headerMenu = document.getElementById("headerMenu");
-    headerMenu.style.display = "none";
-    navigate("/my-reports", { replace: true });
-    console.log("myReps");
+    if (token) {
+      headerMenu.style.display = "none";
+      navigate("/my-reports", { replace: true });
+    } else {
+      setAtentionCard(true);
+    }
   };
   const handleClickMyData = (e) => {
     e.preventDefault();
     const headerMenu = document.getElementById("headerMenu");
-    headerMenu.style.display = "none";
-    navigate("/my-data/menu", { replace: true });
-    console.log("myData");
+    if (token) {
+      headerMenu.style.display = "none";
+      navigate("/my-data/menu", { replace: true });
+    } else {
+      setAtentionCard(true);
+    }
   };
   const handleClickHome = (e) => {
     e.preventDefault();
     navigate("/", { replace: true });
-    console.log("home");
   };
-
   return (
     <div className={css.absolute}>
       <header className={css.header}>
@@ -116,6 +125,8 @@ export function Header() {
           headerMenuEmail={css.headerMenuEmail}
           headerMenuCancelButton={css.headerMenuCancelButton}
         />
+        <AtentionCard data={atentionCardAtom} />
+        <Location />
       </div>
     </div>
   );

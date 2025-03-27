@@ -1,13 +1,12 @@
 import React from "react";
 import { locationCoords } from "../../atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-
 import * as css from "./index.css";
 import { ReportCard } from "../../components/reportCard";
 
 export function HomePage() {
-  const setLocation = useSetRecoilState(locationCoords);
   const curretLocation = useRecoilValue(locationCoords);
+  const setLocation = useSetRecoilState(locationCoords);
   const locationHandler = (e) => {
     e.preventDefault();
     const success = (position) => {
@@ -31,7 +30,7 @@ export function HomePage() {
             Dar mi ubicación actual
           </button>
 
-          <button className={css.infoButton}>¿Cómo funciona Pet Finder?</button>
+          {/* <button className={css.infoButton}>¿Cómo funciona Pet Finder?</button> */}
         </div>
       </div>
     );

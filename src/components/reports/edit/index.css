@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    padding-top: 60px;
+    padding: 0px 15px;
     align-items: center;
     gap: 10px
 }
@@ -19,20 +19,35 @@
     padding-bottom: 20px;
 }
 
+.title2 {
+    width: 100%;
+    font-family: Roboto;
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+}
+
 .form {
     display: flex;
     flex-direction: column;
     height: 100%;
+    max-width: 800px;
     gap: 20px;
+    padding: 20px 15px 20px;
+    background-color: grey;
+    border-radius: 10px;
 }
 
 .textfield {
     display: flex;
     flex-direction: column;
-    width: 335px;
+    width: 100%;
     border: none;
-    padding: 0;
+    padding: 5px 2px;
     gap: 15px;
+    align-items: center;
+    border: solid 3px black;
+    border-radius: 10px;
 }
 
 .formEmailLabel {
@@ -40,47 +55,40 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    text-align: left;
+    text-align: center;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
-.email,
-.password,
-.password-check,
 .name,
 .search {
-    width: 335px;
+    width: 100%;
     height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
 }
 
 .imgIngresarContainer,
 .mapContainer {
-    width: 340.3px;
-    height: 205px;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .imgIngresar {
-    height: 180px;
+    max-height: 300px;
+    /* width: 400px; */
 }
 
 .mapContainer {
-    display: block;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
 }
 
-.title2 {
-    width: 100%;
-    height: 45px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 18.75px;
-    text-align: center;
-    margin: 0;
-}
 
 .form-button-submit,
 .formButtonCancel,
@@ -148,29 +156,4 @@
     color: rgba(90, 143, 236, 1);
     border: none;
     background-color: transparent;
-}
-
-.report-container {
-    display: flex;
-    flex-direction: column;
-    width: 335px;
-    height: 234px;
-    background-color: rgba(38, 48, 46, 1);
-    padding: 5px;
-    align-items: center;
-    gap: 5px;
-}
-
-.report-img {
-    width: 320px;
-    height: 136px;
-}
-
-.report-profile-img {
-    width: 100%;
-    height: 136px;
-}
-
-.report-box {
-    display: flex;
 }

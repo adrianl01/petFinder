@@ -16,6 +16,7 @@ body {
     position: fixed;
     padding-top: 80px;
     justify-content: space-between;
+    top: 0;
 }
 
 .homeImg {

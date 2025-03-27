@@ -1,13 +1,13 @@
 import React from "react";
-import { logInCheck } from "../../hooks";
+import { getUserEmail } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { userEmail } from "../../atoms";
+import { tokenAtom, userEmail } from "../../atoms";
 
 export function EmailButton(props) {
-  const emailHooks = logInCheck();
   const setEmailState = useSetRecoilState(userEmail);
-  console.log("compEmailHook:", emailHooks);
+  const setTokenState = useSetRecoilState(tokenAtom);
+  const emailHook = getUserEmail();
   const navigate = useNavigate();
 
   const handleClickLogIn = (e) => {
@@ -29,8 +29,9 @@ export function EmailButton(props) {
     const headerMenu = document.getElementById("headerMenu");
     headerMenu.style.display = "none";
     setEmailState(null);
+    setTokenState(null);
   };
-  if (emailHooks == null) {
+  if (emailHook == null) {
     return (
       <div className={props.headerMenuBottom}>
         <div className={props.headerMenuEmail}></div>
@@ -50,9 +51,8 @@ export function EmailButton(props) {
         </button>
       </div>
     );
-  } else if (emailHooks !== null) {
-    const userEmail = emailHooks[1].email;
-    console.log(userEmail);
+  } else if (emailHook !== null) {
+    const userEmail = emailHook.email;
     return (
       <div className={props.headerMenuBottom}>
         <div className={props.headerMenuEmail}>{userEmail}</div>

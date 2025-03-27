@@ -21,11 +21,8 @@
 
 .title2 {
     width: 100%;
-    height: 45px;
     font-family: Roboto;
-    font-size: 16px;
     font-weight: 400;
-    line-height: 18.75px;
     text-align: center;
     margin: 0;
 }
@@ -46,9 +43,11 @@
     flex-direction: column;
     width: 100%;
     border: none;
-    padding: 0;
+    padding: 2px;
     gap: 15px;
     align-items: center;
+    border: solid 3px black;
+    border-radius: 10px;
 }
 
 .formEmailLabel {
@@ -56,10 +55,18 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-    text-align: left;
+    text-align: center;
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+.name,
+.search {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
 }
 
 .imgIngresarContainer,
@@ -69,7 +76,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .mapContainer {
@@ -79,19 +85,15 @@
 }
 
 .imgIngresar {
-    height: 180px;
+    height: 300px;
+    /* width: 400px; */
 }
 
-.name,
-.search {
-    width: 100%;
-    height: 50px;
-}
 
 .atentionText {
     display: none;
     color: red;
-    font-size: 10px;
+    font-size: 15px;
     margin: 0;
 }
 

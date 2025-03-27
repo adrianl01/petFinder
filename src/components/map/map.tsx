@@ -9,22 +9,20 @@ const INITIAL_CENTER = [-74.0242, 40.6941];
 const INITIAL_ZOOM = 10.12;
 
 export default function NewMapApp(prop) {
-  let markAdded = false;
+  const setLoc = useSetRecoilState(longLatReport);
   const mapContainerRef = useRef();
   const mapRef = useRef() as any;
-  const setLongLat = useSetRecoilState(longLatReport);
 
   const [center, setCenter] = useState(INITIAL_CENTER);
   const [zoom, setZoom] = useState(INITIAL_ZOOM);
-  const coords = useRecoilValue(locationCoords);
+  const locCoords = useRecoilValue(locationCoords);
   var allMarkers = [] as any;
   useEffect(() => {
-    console.log("useEffect");
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYWRyaWFubGVpdmExIiwiYSI6ImNsdW5qOTBmYzFubmMydm8xNzd1aGM0MzUifQ.XKlAT89VnNSAFVho6Ztetw";
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
-      center: coords || (center as any),
+      center: locCoords || (center as any),
       zoom: zoom,
     });
     mapRef.current.on("move", () => {
@@ -34,7 +32,18 @@ export default function NewMapApp(prop) {
       setCenter([mapCenter.lng, mapCenter.lat]);
       setZoom(mapZoom);
     });
+    if (prop.coords) {
+      const coord = [prop.coords.lng, prop.coords.lat];
+      setCenter(coord);
+      const newMarker = new mapboxgl.Marker()
+        .setLngLat(coord as any)
+        .addTo(mapRef.current);
+      allMarkers.push(newMarker);
+    }
     mapRef.current.on("click", (e) => {
+      console.log(e.lngLat);
+      const loc = { long: e.lngLat.lng, lat: e.lngLat.lat };
+      setLoc(loc);
       if (allMarkers.length > 0) {
         for (let i = 0; i < allMarkers.length; i++) {
           allMarkers[i].remove();
@@ -45,27 +54,13 @@ export default function NewMapApp(prop) {
         .setLngLat(coord as any)
         .addTo(mapRef.current);
       allMarkers.push(newMarker);
-      const strgCoord = JSON.stringify(coord);
-      localStorage.setItem("coords", strgCoord);
     });
 
     return () => {
       mapRef.current.remove();
     };
   }, []);
-  function DeleteMarkerButton() {
-    return (
-      <button
-        onClick={() => {
-          for (let i = 0; i < allMarkers.length; i++) {
-            allMarkers[i].remove();
-          }
-        }}
-      >
-        Borrar Marcador
-      </button>
-    );
-  }
+
   return (
     <div>
       <div
@@ -73,7 +68,6 @@ export default function NewMapApp(prop) {
         id="map-container"
         ref={mapContainerRef}
       />
-      {markAdded ? <DeleteMarkerButton /> : <></>}
     </div>
   );
 }

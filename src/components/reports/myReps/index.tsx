@@ -1,48 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as css from "./index.css";
 import { NoReps } from "../NoReps";
+import { getUserReps } from "../../../hooks";
+import { useNavigate } from "react-router-dom";
 export function MyReps() {
-  const img = "./img";
-  const data = [
-    // {
-    //   nombre: "Pedro Sanchez",
-    //   location: "Arriba España",
-    // },
-    // {
-    //   nombre: "Juan Juanes",
-    //   location: "Abajo España",
-    // },
-    // {
-    //   nombre: "3er Nombre",
-    //   location: "Sólo España",
-    // },
-  ];
+  const nav = useNavigate();
 
-  if (data.length < 0) {
+  const [data, setData] = useState([]);
+  const userRepsRes = getUserReps();
+  useEffect(() => {
+    setData(userRepsRes);
+  }, [userRepsRes]);
+
+  function MyRepsComp(data) {
     return (
-      <div className={css.main}>
-        <h2 className={css.title}>Mascotas Reportadas</h2>
-        {data.map((d) => (
-          <div className={css.reportContainer}>
+      <>
+        {" "}
+        {data.repsData.data.map((d) => (
+          <div key={d.id} id={d.id} className={css.reportContainer}>
             <div className={css.reportImg}>
-              <img className={css.reportProfileImg} src={img} />
+              <img className={css.reportProfileImg} src={d.petImg} />
             </div>
             <div className={css.reportBox}>
               <div className={css.reportInfo}>
-                <h2 className={css.reportTitle}>{d.nombre}</h2>
+                <h2 className={css.reportTitle}>{d.petName}</h2>
                 <h4 className={css.reportLocation}>{d.location}</h4>
               </div>
-              <button type="button" className={css.reportButtonEdit}>
+              <button
+                type="button"
+                className={css.reportButtonEdit}
+                onClick={() => nav("/edit-report/" + d.id, { replace: true })}
+              >
                 Editar
                 <img src="/imgs/pencil.png" />
               </button>
             </div>
           </div>
         ))}
-      </div>
+      </>
     );
-  } else if (data.length == 0) {
-    console.log("length:", data.length);
-    return <NoReps />;
   }
+  function MainComp(data) {
+    return data.data.length > 0 ? (
+      <div className={css.main}>
+        <h2 className={css.title}>Mascotas Reportadas</h2>
+        <MyRepsComp repsData={data} />
+      </div>
+    ) : (
+      <NoReps />
+    );
+  }
+  return <MainComp data={data} />;
 }
