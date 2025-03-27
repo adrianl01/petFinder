@@ -4,22 +4,21 @@ import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { getToken, tokenAtom, userEmail, userPassword } from "../../../atoms";
 import { useForm } from "react-hook-form";
-import { getUserToken } from "../../../hooks";
 
 export function SignIn() {
   const navigate = useNavigate();
   const setEmailState = useSetRecoilState(userEmail);
   const setPasswordState = useSetRecoilState(userPassword);
   const setToken = useSetRecoilState(tokenAtom);
-  const token = getUserToken();
-  useEffect(() => {
-    console.log("useEffect");
-    console.log(token);
-    if (token) {
-      setToken(token);
-      navigate("/", { replace: true });
-    }
-  });
+  // const token = getUserToken();
+  // useEffect(() => {
+  //   console.log("useEffect");
+  //   console.log(token);
+  //   if (token) {
+  //     setToken(token);
+  //     navigate("/", { replace: true });
+  //   }
+  // });
 
   const {
     register,
@@ -30,6 +29,8 @@ export function SignIn() {
     console.log(data);
     setEmailState({ email: data.email });
     setPasswordState({ password: data.password });
+    const res = await getToken(data);
+    console.log(res);
   };
   return (
     <div className={css.mainContainer}>

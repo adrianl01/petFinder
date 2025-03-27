@@ -45,6 +45,10 @@ export const repIdAtom = atom({
     key: "repId",
     default: null
 });
+export const userData = atom({
+    key: "userData",
+    default: null
+});
 
 export const repsByCoords = selector({
     key: 'repsByCoords',
@@ -60,35 +64,47 @@ export const repsByCoords = selector({
         else { return null };
     }
 });
-export const getToken = selector({
-    key: 'getToken',
-    get: async ({ get }) => {
-        const valEmail = get(userEmail);
-        const valPassword = get(userPassword)
-        if (valPassword) {
-            console.log(valPassword.password);
-            const strngEmail = valEmail.email;
-            const strngPassword = valPassword.password;
-            const init: any = {};
-            init.headers ||= {};
-            init.headers["Content-type"] = "application/json";
-            init.method = "POST";
-            init.mode = "cors";
-            init.body = JSON.stringify({
-                "email": strngEmail,
-                "password": strngPassword
-            })
-            try {
-                const res = await <any>fetch(apiUrl + 'auth/token', init)
-                const jsonRes = await res.json();
-                return jsonRes;
-            }
-            catch (e) {
-                return console.error(e)
-            }
-        } else { null };
+export const creatUser = async (userData) => {
+    console.log(userData)
+    const init: any = {};
+    init.headers ||= {};
+    init.headers["Content-type"] = "application/json";
+    init.method = "POST";
+    init.mode = "cors";
+    init.body = JSON.stringify(userData)
+    try {
+        const res = await <any>fetch(apiUrl + 'auth', init)
+        const jsonRes = await res.json();
+        return jsonRes;
     }
-});
+    catch (e) {
+        return console.error(e)
+    }
+};
+export const getToken = async (data) => {
+    console.log(data)
+    const valEmail = data.email
+    const valPassword = data.password
+    if (valPassword) {
+        const init: any = {};
+        init.headers ||= {};
+        init.headers["Content-type"] = "application/json";
+        init.method = "POST";
+        init.mode = "cors";
+        init.body = JSON.stringify({
+            "email": valEmail,
+            "password": valPassword
+        })
+        try {
+            const res = await <any>fetch(apiUrl + 'auth/token', init)
+            const jsonRes = await res.json();
+            return jsonRes;
+        }
+        catch (e) {
+            return console.error(e)
+        }
+    }
+};
 export const getMyReps = selector({
     key: 'myReps',
     get: async ({ get }) => {

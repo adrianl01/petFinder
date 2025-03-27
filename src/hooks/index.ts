@@ -11,10 +11,10 @@ export function getRepsByCoords() {
     return repsRes;
 };
 
-export function getUserToken() {
-    const getUserToken = useRecoilValue(getToken);
-    return getUserToken
-};
+// export function getUserToken() {
+//     const getUserToken = useRecoilValue(getToken);
+//     return getUserToken
+// };
 
 export function getUserReps() {
     const getUserReps = useRecoilValue(getMyReps);

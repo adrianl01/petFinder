@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as css from "./index.css";
 import { useNavigate } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { getToken, userEmail, userPassword } from "../../../atoms";
+import { useSetRecoilState } from "recoil";
+import { creatUser, tokenAtom } from "../../../atoms";
 import { useForm } from "react-hook-form";
 
 export function SignUp() {
   const navigate = useNavigate();
-  // const getUserToken = useRecoilValue(getToken);
-  const setEmailState = useSetRecoilState(userEmail);
-  const setPasswordState = useSetRecoilState(userPassword);
+  const setToken = useSetRecoilState(tokenAtom);
 
   const {
     register,
@@ -17,66 +15,71 @@ export function SignUp() {
     formState: { errors },
   } = useForm();
   const handlerSubmit = async (data) => {
-    console.log(data);
-    // navigate("/", { replace: true });
-    // await setEmailState({ email: data.email });
-    // await setPasswordState({ password: data.password });
+    await creatUser(data);
+    navigate("/", { replace: true });
   };
   return (
     <div className={css.mainContainer}>
       <div className={css.main}>
         <h2 className={css.title}>Registrarse</h2>
         <h4 className={css.title2}>
-          Ingresá los siguientes datos para registrarte
+          Ingresá los siguientes datos personales para poder registrarte
         </h4>
-        <form
-          className={css.form}
-          method="post"
-          onSubmit={handleSubmit(handlerSubmit)}
-        >
+        <form className={css.form} onSubmit={handleSubmit(handlerSubmit)}>
           <fieldset className={css.textfield}>
+            <label className={css.formEmailLabel}>
+              NOMBRE
+              <input
+                type="text"
+                className={css.email}
+                {...register("fullName", { required: true })}
+                id="fullName"
+              />
+              {errors.exampleRequired && <span>This field is required</span>}
+            </label>
+            <label className={css.formEmailLabel}>
+              LUGAR
+              <input
+                type="text"
+                className={css.email}
+                {...register("location", { required: true })}
+                id="location"
+              />
+              {errors.exampleRequired && <span>This field is required</span>}
+            </label>
             <label className={css.formEmailLabel}>
               EMAIL
               <input
                 type="email"
                 className={css.email}
-                {...register("email")}
+                {...register("email", { required: true })}
                 id="email"
               />
+              {errors.exampleRequired && <span>This field is required</span>}
             </label>
             <label className={css.formEmailLabel}>
               CONTRASEÑA
               <input
                 type="password"
                 className={css.password}
-                {...register("password")}
+                {...register("password", { required: true })}
                 id="password"
-              />
-            </label>
-            <label className={css.formEmailLabel}>
-              CONFIRMAR CONTRASEÑA
-              <input
-                type="password"
-                className={css.passwordCheck}
-                {...register("passwordCheck", { required: true })}
-                name="passwordCheck"
               />
               {errors.exampleRequired && <span>This field is required</span>}
             </label>
           </fieldset>
           <button type="submit" className={css.formButton}>
-            Acceder
+            Crear Cuenta
           </button>
         </form>
         <div className={css.forgotContainer}>
-          Ya tenés una cuenta?
           <button
-            className={css.loginContainerButton}
+            className={css.forgotContainerButton}
             onClick={() => {
-              navigate("/sign-in", { replace: true });
+              navigate("/my-data/modify-password", { replace: true });
             }}
           >
-            Iniciar Sesión
+            Olvidé mi contraseña
           </button>
         </div>
       </div>
