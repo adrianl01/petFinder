@@ -1,5 +1,5 @@
 import { atom, selector } from "recoil";
-import { getTokenLS } from "./hooks";
+import { getTokenLS, getUserLocLS } from "./hooks";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 export const tokenAtom = atom({
@@ -54,7 +54,7 @@ export const userData = atom({
 export const repsByCoords = selector({
     key: 'repsByCoords',
     get: async ({ get }) => {
-        const val = get(locationCoords);
+        const val = getUserLocLS();
         if (val) {
             const long = val[0];
             const lat = val[1];

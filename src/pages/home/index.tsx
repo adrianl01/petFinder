@@ -1,17 +1,19 @@
 import React from "react";
-import { locationCoords } from "../../atoms";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 import * as css from "./index.css";
 import { ReportCard } from "../../components/reportCard";
+import { getUserLocLS } from "../../hooks";
+import { useNavigate, useNavigation } from "react-router-dom";
 
 export function HomePage() {
-  const curretLocation = useRecoilValue(locationCoords);
-  const setLocation = useSetRecoilState(locationCoords);
+  const nav = useNavigate();
+  const curretLocation = getUserLocLS();
   const locationHandler = (e) => {
     e.preventDefault();
     const success = (position) => {
       const location = [position.coords.longitude, position.coords.latitude];
-      setLocation(location);
+      const strngLoc = JSON.stringify(location);
+      localStorage.setItem("userLocation", strngLoc);
+      nav("/");
     };
     navigator.geolocation.getCurrentPosition(success);
   };

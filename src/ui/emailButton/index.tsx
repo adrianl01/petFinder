@@ -1,9 +1,9 @@
 import React from "react";
-import { getUserEmail } from "../../hooks";
+import { getEmailLS, getUserEmail } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 
 export function EmailButton(props) {
-  const emailHook = getUserEmail();
+  const emailHook = getEmailLS();
   const navigate = useNavigate();
 
   const handleClickLogIn = (e) => {
@@ -48,7 +48,7 @@ export function EmailButton(props) {
       </div>
     );
   } else if (emailHook !== null) {
-    const userEmail = emailHook.email;
+    const userEmail = emailHook;
     return (
       <div className={props.headerMenuBottom}>
         <div className={props.headerMenuEmail}>{userEmail}</div>

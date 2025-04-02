@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import * as css from "./App.css";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { locationCoords, longLatReport } from "../../atoms";
+import { useSetRecoilState } from "recoil";
+import { longLatReport } from "../../atoms";
+import { getUserLocLS } from "../../hooks";
 
 const INITIAL_CENTER = [-74.0242, 40.6941];
 const INITIAL_ZOOM = 10.12;
@@ -15,7 +16,7 @@ export default function NewMapApp(prop) {
 
   const [center, setCenter] = useState(INITIAL_CENTER);
   const [zoom, setZoom] = useState(INITIAL_ZOOM);
-  const locCoords = useRecoilValue(locationCoords);
+  const locCoords = getUserLocLS();
   var allMarkers = [] as any;
   useEffect(() => {
     mapboxgl.accessToken =

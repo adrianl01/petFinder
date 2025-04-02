@@ -5,7 +5,6 @@ import { HomePage } from "../pages/home";
 import { SignIn } from "../components/auth/SignIn";
 import { SignUp } from "../components/auth/SignUp";
 import { CardsPage } from "../pages/cards";
-import { LogInPage } from "../pages/login";
 import { MyDataPage } from "../pages/my-data/modify-data";
 import { MenuPage } from "../pages/my-data/menu";
 import { EditRepsPage } from "../pages/edit-report";
@@ -19,7 +18,6 @@ export function AppRoutes() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="cards" element={<CardsPage />} />
-        <Route path="log-in" element={<LogInPage />} />
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="create-report" element={<CreateRepsPage />} />

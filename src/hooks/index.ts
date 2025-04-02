@@ -28,4 +28,8 @@ export function getEmailLS() {
 export function getTokenLS() {
     return localStorage.getItem("token")
 }
+export function getUserLocLS() {
+    const loc = localStorage.getItem("userLocation")
+    return JSON.parse(loc)
+}
 

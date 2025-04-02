@@ -2,14 +2,15 @@ import React from "react";
 import * as css from "./header.css";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { atentionCard, locationCoords } from "../../atoms";
+import { atentionCard } from "../../atoms";
 import { EmailButton } from "../../ui/emailButton";
 import { AtentionCard } from "./atentionCard";
-import { getEmailLS, getTokenLS } from "../../hooks";
+import { getEmailLS, getTokenLS, getUserLocLS } from "../../hooks";
 import Location from "./location";
 export function Header() {
-  const currentLoc = useRecoilValue(locationCoords);
+  const currentLoc = getUserLocLS();
   const token = getTokenLS();
+  console.log(token);
   const atentionCardAtom = useRecoilValue(atentionCard);
   const setAtentionCard = useSetRecoilState(atentionCard);
   const userEmail = getEmailLS();
