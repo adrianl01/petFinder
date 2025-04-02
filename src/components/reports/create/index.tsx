@@ -12,7 +12,7 @@ import {
   newReportInfo,
   uploadImage,
 } from "../../../atoms";
-import { getUserEmail } from "../../../hooks";
+import { getEmailLS } from "../../../hooks";
 
 export function CreateReport() {
   const petLoc = useRecoilValue(longLatReport);
@@ -20,7 +20,7 @@ export function CreateReport() {
   const imgInfoAtom = useRecoilValue(imgInfo);
   const newRepAtom = useRecoilValue(newReportInfo);
   const newRep = useRecoilValue(createRep);
-  const userEmail = getUserEmail();
+  const userEmail = getEmailLS();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export function CreateReport() {
       lat: petLoc.lat,
       long: petLoc.long,
       petImg: res,
-      email: userEmail.email,
+      email: userEmail,
     };
     await setNewRepInfo(reportInfo);
     console.log("hacer cartel que diga que se creó el reporte");
