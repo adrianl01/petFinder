@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getRepByIdFunc, getUserEmail } from "../../../hooks";
+import { getRepByIdFunc, getTokenLS, getUserEmail } from "../../../hooks";
 import * as css from "./index.css";
 import { useRecoilValue } from "recoil";
 import {
@@ -8,7 +8,6 @@ import {
   imgInfo,
   longLatEditReport,
   repIdAtom,
-  tokenAtom,
   updateRep,
   uploadImage,
 } from "../../../atoms";
@@ -17,7 +16,7 @@ import NewMapApp from "../../map/map";
 import { useForm } from "react-hook-form";
 
 export function EditReport() {
-  const token = useRecoilValue(tokenAtom);
+  const token = getTokenLS();
   const repId = useRecoilValue(repIdAtom);
   const imgInfoAtom = useRecoilValue(imgInfo);
   const petLocEdit = useRecoilValue(longLatEditReport);

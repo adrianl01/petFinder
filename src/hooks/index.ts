@@ -1,4 +1,4 @@
-import { deleteRep, getMyReps, getRepById, getToken, locationCoords, repIdAtom, repsByCoords, tokenAtom, uploadImage, userEmail, userPassword } from "../atoms";
+import { getMyReps, getRepById, repIdAtom, repsByCoords, userEmail } from "../atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil"
 
 export function getUserEmail() {
@@ -11,11 +11,6 @@ export function getRepsByCoords() {
     return repsRes;
 };
 
-// export function getUserToken() {
-//     const getUserToken = useRecoilValue(getToken);
-//     return getUserToken
-// };
-
 export function getUserReps() {
     const getUserReps = useRecoilValue(getMyReps);
     return getUserReps
@@ -27,4 +22,10 @@ export function getRepByIdFunc(id: string) {
     return repByIdRes
 };
 
+export function getEmailLS() {
+    return localStorage.getItem("email")
+}
+export function getTokenLS() {
+    return localStorage.getItem("token")
+}
 

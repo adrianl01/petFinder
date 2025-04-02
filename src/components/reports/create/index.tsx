@@ -43,9 +43,7 @@ export function CreateReport() {
       petImg: res,
       email: userEmail.email,
     };
-    console.log(reportInfo);
     await setNewRepInfo(reportInfo);
-
     console.log("hacer cartel que diga que se creó el reporte");
     navigate("/", { replace: true });
   };

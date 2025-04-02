@@ -1,12 +1,8 @@
 import React from "react";
 import { getUserEmail } from "../../hooks";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { tokenAtom, userEmail } from "../../atoms";
 
 export function EmailButton(props) {
-  const setEmailState = useSetRecoilState(userEmail);
-  const setTokenState = useSetRecoilState(tokenAtom);
   const emailHook = getUserEmail();
   const navigate = useNavigate();
 
@@ -28,8 +24,8 @@ export function EmailButton(props) {
     e.preventDefault();
     const headerMenu = document.getElementById("headerMenu");
     headerMenu.style.display = "none";
-    setEmailState(null);
-    setTokenState(null);
+    localStorage.removeItem("email");
+    localStorage.removeItem("token");
   };
   if (emailHook == null) {
     return (

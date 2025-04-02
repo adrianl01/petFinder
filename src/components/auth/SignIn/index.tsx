@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import * as css from "./index.css";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { getToken, tokenAtom, userEmail, userPassword } from "../../../atoms";
+import { getToken, userEmail, userPassword } from "../../../atoms";
 import { useForm } from "react-hook-form";
 
 export function SignIn() {
   const navigate = useNavigate();
   const setEmailState = useSetRecoilState(userEmail);
   const setPasswordState = useSetRecoilState(userPassword);
-  const setToken = useSetRecoilState(tokenAtom);
+
   const {
     register,
     handleSubmit,
@@ -19,8 +19,8 @@ export function SignIn() {
     console.log(data);
     setEmailState({ email: data.email });
     setPasswordState({ password: data.password });
-    const res = await getToken(data);
-    setToken(res);
+    await getToken(data);
+    localStorage.setItem("email", data.email);
     navigate("/", { replace: true });
   };
   return (

@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import * as css from "./header.css";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { atentionCard, locationCoords, tokenAtom } from "../../atoms";
+import { atentionCard, locationCoords } from "../../atoms";
 import { EmailButton } from "../../ui/emailButton";
 import { AtentionCard } from "./atentionCard";
-import { getUserEmail } from "../../hooks";
+import { getEmailLS, getTokenLS } from "../../hooks";
 import Location from "./location";
 export function Header() {
   const currentLoc = useRecoilValue(locationCoords);
-  const token = useRecoilValue(tokenAtom);
+  const token = getTokenLS();
   const atentionCardAtom = useRecoilValue(atentionCard);
   const setAtentionCard = useSetRecoilState(atentionCard);
-  const userEmail = getUserEmail();
+  const userEmail = getEmailLS();
 
   const navigate = useNavigate();
   const handleClickOpenButton = (e) => {

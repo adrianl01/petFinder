@@ -1,4 +1,5 @@
 import { atom, selector } from "recoil";
+import { getTokenLS } from "./hooks";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
 export const tokenAtom = atom({
@@ -98,7 +99,7 @@ export const getToken = async (data) => {
         try {
             const res = await <any>fetch(apiUrl + 'auth/token', init)
             const jsonRes = await res.json();
-            return jsonRes;
+            return localStorage.setItem("token", jsonRes.jwtRes)
         }
         catch (e) {
             return console.error(e)
@@ -108,12 +109,12 @@ export const getToken = async (data) => {
 export const getMyReps = selector({
     key: 'myReps',
     get: async ({ get }) => {
-        const val = get(tokenAtom);
+        const val = getTokenLS();
         if (val) {
             console.log(val)
             const init: any = {};
             init.headers ||= {};
-            init.headers.Authorization = "Bearer " + val.jwtRes;
+            init.headers.Authorization = "Bearer " + val;
             init.headers["Content-type"] = "application/json";
             const res = await <any>fetch(apiUrl + 'me/reports', init);
             const myReps = await res.json();
@@ -125,7 +126,7 @@ export const getMyReps = selector({
 export const createRep = selector({
     key: 'createRep',
     get: async ({ get }) => {
-        const val = get(tokenAtom);
+        const val = getTokenLS();
         if (!val) { return console.error("No hay token") }
         const newRep = get(newReportInfo)
         if (!newRep) { return console.error("No data") }
@@ -133,7 +134,7 @@ export const createRep = selector({
         console.log(val)
         const init: any = {};
         init.headers ||= {};
-        init.headers.Authorization = "Bearer " + val.jwtRes;
+        init.headers.Authorization = "Bearer " + val;
         init.headers["Content-type"] = "application/json";
         init.method = "POST";
         init.mode = "cors";
@@ -170,12 +171,12 @@ export const uploadImage = async (imgInfoAtom) => {
 export const getRepById = selector({
     key: 'getRepById',
     get: async ({ get }) => {
-        const token = get(tokenAtom);
+        const token = getTokenLS();
         const repId = get(repIdAtom);
         if (token) {
             const init: any = {};
             init.headers ||= {};
-            init.headers.Authorization = "Bearer " + token.jwtRes;
+            init.headers.Authorization = "Bearer " + token;
             init.headers["Content-type"] = "application/json";
             const res = await <any>fetch(apiUrl + 'me/reports/' + repId, init);
             const myReps = await res.json();
