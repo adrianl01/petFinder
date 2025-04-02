@@ -65,7 +65,7 @@ export const repsByCoords = selector({
         else { return null };
     }
 });
-export const creatUser = async (userData) => {
+export const createUser = async (userData) => {
     console.log(userData)
     const init: any = {};
     init.headers ||= {};

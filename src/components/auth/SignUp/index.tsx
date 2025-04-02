@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as css from "./index.css";
 import { useNavigate } from "react-router-dom";
-import { creatUser, getToken } from "../../../atoms";
+import { createUser, getToken } from "../../../atoms";
 import { useForm } from "react-hook-form";
 
 export function SignUp() {
@@ -14,7 +14,7 @@ export function SignUp() {
   } = useForm();
   const handlerSubmit = async (data) => {
     localStorage.setItem("email", data.email);
-    await creatUser(data);
+    await createUser(data);
     await getToken(data);
     navigate("/", { replace: true });
   };
