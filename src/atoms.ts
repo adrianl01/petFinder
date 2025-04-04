@@ -66,7 +66,6 @@ export const repsByCoords = selector({
     }
 });
 export const createUser = async (userData) => {
-    console.log(userData)
     const init: any = {};
     init.headers ||= {};
     init.headers["Content-type"] = "application/json";
@@ -83,7 +82,6 @@ export const createUser = async (userData) => {
     }
 };
 export const getToken = async (data) => {
-    console.log(data)
     const valEmail = data.email
     const valPassword = data.password
     if (valPassword) {
@@ -111,7 +109,6 @@ export const getMyReps = selector({
     get: async ({ get }) => {
         const val = getTokenLS();
         if (val) {
-            console.log(val)
             const init: any = {};
             init.headers ||= {};
             init.headers.Authorization = "Bearer " + val;

@@ -1,5 +1,5 @@
 import React from "react";
-import * as css from "./index.css";
+import * as css from "../index.css";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -23,7 +23,7 @@ export function MyData() {
         method="post"
         onSubmit={handleSubmit(handlerSubmit)}
       >
-        <fieldset className={css.textfield}>
+        <fieldset className={css.fieldSet}>
           <label className={css.formNameLabel}>
             NOMBRE
             <input

@@ -26,6 +26,7 @@ export function EmailButton(props) {
     headerMenu.style.display = "none";
     localStorage.removeItem("email");
     localStorage.removeItem("token");
+    navigate("/", { replace: true });
   };
   if (emailHook == null) {
     return (

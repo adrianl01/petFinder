@@ -10,7 +10,6 @@ import Location from "./location";
 export function Header() {
   const currentLoc = getUserLocLS();
   const token = getTokenLS();
-  console.log(token);
   const atentionCardAtom = useRecoilValue(atentionCard);
   const setAtentionCard = useSetRecoilState(atentionCard);
   const userEmail = getEmailLS();

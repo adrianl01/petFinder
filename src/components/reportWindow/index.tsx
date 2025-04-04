@@ -5,12 +5,9 @@ import { useForm } from "react-hook-form";
 
 export function ReportWindow(prop) {
   const params = useParams();
-  console.log(params);
-  console.log("prop:", prop);
   const closeButtonHandler = (e) => {
     e.preventDefault();
     const windowRep = document.getElementById("windowRep");
-    console.log("button");
     windowRep.style.display = "none";
   };
   const {
