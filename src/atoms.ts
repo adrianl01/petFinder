@@ -65,7 +65,7 @@ export const repsByCoords = selector({
         else { return null };
     }
 });
-export const createUser = async (userData) => {
+export const createUser = async (userData: any) => {
     const init: any = {};
     init.headers ||= {};
     init.headers["Content-type"] = "application/json";
@@ -81,7 +81,7 @@ export const createUser = async (userData) => {
         return console.error(e)
     }
 };
-export const getToken = async (data) => {
+export const getToken = async (data: { email: any; password: any; }) => {
     const valEmail = data.email
     const valPassword = data.password
     if (valPassword) {
@@ -108,6 +108,7 @@ export const getMyReps = selector({
     key: 'myReps',
     get: async ({ get }) => {
         const val = getTokenLS();
+        console.log(val)
         if (val) {
             const init: any = {};
             init.headers ||= {};
@@ -143,12 +144,12 @@ export const createRep = selector({
 });
 
 
-export const uploadImage = async (imgInfoAtom) => {
+export const uploadImage = async (imgInfoAtom: any) => {
     console.log(imgInfoAtom);
     let formData = new FormData();
     formData.append("file", imgInfoAtom as any);
-    formData.append("upload_preset", process.env.CLOUDINARY_UPLOAD_PRESET);
-    formData.append("api_key", process.env.CLOUDINARY_API_KEY);
+    formData.append("upload_preset", process.env.CLOUDINARY_UPLOAD_PRESET as string);
+    formData.append("api_key", process.env.CLOUDINARY_API_KEY as string);
     console.log(formData);
     try {
         if (imgInfoAtom !== null) {
@@ -182,11 +183,11 @@ export const getRepById = selector({
         else { return null };
     }
 });
-export async function deleteRep(token, repId) {
+export async function deleteRep(token: string, repId: string) {
     if (token) {
         const init: any = {};
         init.headers ||= {};
-        init.headers.Authorization = "Bearer " + token.jwtRes;
+        init.headers.Authorization = "Bearer " + token;
         init.headers["Content-type"] = "application/json";
         init.method = "DELETE";
         const res = await <any>fetch(apiUrl + 'me/reports/' + repId, init);
@@ -194,12 +195,12 @@ export async function deleteRep(token, repId) {
         return res
     };
 };
-export async function updateRep(token, repId, data) {
+export async function updateRep(token: string, repId: string, data: any) {
     console.log(data)
     if (token) {
         const init: any = {};
         init.headers ||= {};
-        init.headers.Authorization = "Bearer " + token.jwtRes;
+        init.headers.Authorization = "Bearer " + token;
         init.headers["Content-type"] = "application/json";
         init.method = "PATCH";
         init.body = JSON.stringify(data);

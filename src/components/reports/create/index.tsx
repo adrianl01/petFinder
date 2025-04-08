@@ -25,6 +25,9 @@ export function CreateReport() {
 
   useEffect(() => {
     console.log("newRep", newRep);
+    if (newRep) {
+      setTimeout(() => window.location.assign("/"), 2000);
+    }
   }, [newRepAtom]);
 
   const {
@@ -45,7 +48,6 @@ export function CreateReport() {
     };
     await setNewRepInfo(reportInfo);
     console.log("hacer cartel que diga que se creó el reporte");
-    navigate("/", { replace: true });
   };
 
   const watcher = watch("name");

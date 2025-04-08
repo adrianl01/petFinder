@@ -6,6 +6,7 @@ import { getRepsByCoords } from "../../hooks";
 export function ReportCard() {
   const [data, setData] = useState([]);
   const repsRes = getRepsByCoords();
+  console.log(repsRes);
   useEffect(() => {
     setData(repsRes);
   }, [repsRes]);

@@ -32,9 +32,8 @@ export function EditReport() {
   } = useForm();
   const deleteRepHandler = async (e) => {
     e.preventDefault();
-    const res = deleteRep(token, repId);
-    console.log(res);
-    nav("/");
+    await deleteRep(token, repId);
+    setTimeout(() => window.location.assign("/"), 2000);
   };
   const handlerSubmit = async (data) => {
     console.log(lastRepData);
@@ -42,7 +41,7 @@ export function EditReport() {
     repInfo = {
       petName: data.name || lastRepData.petName,
       location: data.location || lastRepData.location,
-      email: userEmail.email,
+      email: userEmail,
     };
     if (imgInfoAtom) {
       const res = await uploadImage(imgInfoAtom);
@@ -64,8 +63,8 @@ export function EditReport() {
     // antes de irme a buscarle a Marisa 26/3/25 20:12 // el problema es que las coordenadas se envian como strings y no numbers. Solucionar
     const updateRes = await updateRep(token, repId, repInfo);
     console.log(updateRes);
-    console.log("hacer cartel que diga que se creó el reporte");
-    // nav("/", { replace: true });
+    console.log("hacer cartel que diga que se editó el reporte");
+    setTimeout(() => window.location.assign("/"), 2000);
   };
   const watcher = watch("name");
   if (watcher?.length > 15) {
@@ -147,7 +146,7 @@ export function EditReport() {
         <button
           type="button"
           className={css.formButtonCancel}
-          onClick={() => nav("/", { replace: true })}
+          onClick={() => nav("/", { replace: false })}
         >
           Cancelar
         </button>

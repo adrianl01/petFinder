@@ -7,12 +7,14 @@ export function MyReps() {
   const nav = useNavigate();
 
   const [data, setData] = useState([]);
+  console.log(data);
   const userRepsRes = getUserReps();
   useEffect(() => {
     setData(userRepsRes);
   }, [userRepsRes]);
 
   function MyRepsComp(data) {
+    console.log(data);
     return (
       <>
         {" "}
