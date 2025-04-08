@@ -1,10 +1,10 @@
 import { getMyReps, getRepById, repIdAtom, repsByCoords, userEmail } from "../atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil"
 
-export function getUserEmail() {
-    const emailAtom = useRecoilValue(userEmail);
-    return emailAtom;
-};
+// export function getUserEmail() {
+//     const emailAtom = useRecoilValue(userEmail);
+//     return emailAtom;
+// };
 
 export function getRepsByCoords() {
     const repsRes = useRecoilValue(repsByCoords);

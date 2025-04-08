@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import * as css from "./index.css";
 import { useForm } from "react-hook-form";
-import { getRepsByCoords } from "../../hooks";
+import { getRepsByCoords, getEmailLS } from "../../hooks";
+import { sendEmailReport } from "../../atoms";
 
 export function ReportCard() {
   const [data, setData] = useState([]);
   const repsRes = getRepsByCoords();
+  const userEmail = getEmailLS();
   console.log(repsRes);
   useEffect(() => {
     setData(repsRes);
@@ -24,11 +26,6 @@ export function ReportCard() {
     const windowRep = document.getElementById("windowRep");
     windowRep.style.display = "none";
   };
-  const submitHandler = (e) => {
-    e.preventDefault();
-    const windowRep = document.getElementById("windowRep");
-    windowRep.style.display = "none";
-  };
   const {
     register,
     handleSubmit,
@@ -37,6 +34,11 @@ export function ReportCard() {
   const handlerSubmit = (data) => {
     const windowRep = document.getElementById("windowRep");
     windowRep.style.display = "none";
+    const sendData = {
+      ...data,
+      userEmail,
+    };
+    sendEmailReport(sendData);
   };
   function Reps(data) {
     return (

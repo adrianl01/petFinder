@@ -144,12 +144,12 @@ export const createRep = selector({
 });
 
 
-export const uploadImage = async (imgInfoAtom: any) => {
+export const uploadImage = async (imgInfoAtom) => {
     console.log(imgInfoAtom);
     let formData = new FormData();
-    formData.append("file", imgInfoAtom as any);
-    formData.append("upload_preset", process.env.CLOUDINARY_UPLOAD_PRESET as string);
-    formData.append("api_key", process.env.CLOUDINARY_API_KEY as string);
+    formData.append("file", imgInfoAtom);
+    formData.append("upload_preset", process.env.CLOUDINARY_UPLOAD_PRESET);
+    formData.append("api_key", process.env.CLOUDINARY_API_KEY);
     console.log(formData);
     try {
         if (imgInfoAtom !== null) {
@@ -205,6 +205,14 @@ export async function updateRep(token: string, repId: string, data: any) {
         init.method = "PATCH";
         init.body = JSON.stringify(data);
         const res = await <any>fetch(apiUrl + 'me/reports/' + repId, init);
+        console.log(res)
+        return res
+    } else { return { message: "No token was Found" } };
+};
+export async function sendEmailReport(data: any) {
+    console.log(data)
+    if (data.email) {
+        const res = await <any>fetch(apiUrl + 'sight');
         console.log(res)
         return res
     } else { return { message: "No token was Found" } };

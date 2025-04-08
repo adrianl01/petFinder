@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getRepByIdFunc, getTokenLS, getUserEmail } from "../../../hooks";
+import { getEmailLS, getRepByIdFunc, getTokenLS } from "../../../hooks";
 import * as css from "./index.css";
 import { useRecoilValue } from "recoil";
 import {
@@ -20,7 +20,7 @@ export function EditReport() {
   const repId = useRecoilValue(repIdAtom);
   const imgInfoAtom = useRecoilValue(imgInfo);
   const petLocEdit = useRecoilValue(longLatEditReport);
-  const userEmail = getUserEmail();
+  const userEmail = getEmailLS();
   const nav = useNavigate();
   const param = useParams();
   const lastRepData = getRepByIdFunc(param.repId);
