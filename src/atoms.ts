@@ -212,6 +212,11 @@ export async function updateRep(token: string, repId: string, data: any) {
 export async function sendEmailReport(data: any) {
     console.log(data)
     if (data.email) {
+        const init: any = {};
+        init.headers ||= {};
+        init.headers["Content-type"] = "application/json";
+        init.method = "POST";
+        init.body = JSON.stringify(data);
         const res = await <any>fetch(apiUrl + 'sight');
         console.log(res)
         return res
