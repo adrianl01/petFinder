@@ -119,12 +119,24 @@
     background-color: rgba(90, 143, 236, 1);
 }
 
+.form-button-save:active {
+    background-color: rgb(53, 84, 137);
+}
+
 .formButtonCancel {
     background-color: rgba(74, 85, 83, 1);
 }
 
+.formButtonCancel:active {
+    background-color: rgb(51, 59, 57);
+}
+
 .form-button-delete {
     background-color: rgba(235, 99, 114, 1);
+}
+
+.form-button-delete:active {
+    background-color: rgb(122, 51, 59);
 }
 
 .register-container,

@@ -13,7 +13,7 @@ export function HomePage() {
       const location = [position.coords.longitude, position.coords.latitude];
       const strngLoc = JSON.stringify(location);
       localStorage.setItem("userLocation", strngLoc);
-      nav("/");
+      window.location.assign("/");
     };
     navigator.geolocation.getCurrentPosition(success);
   };

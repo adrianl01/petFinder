@@ -92,6 +92,10 @@
     border-radius: 5px;
 }
 
+.reportButtonEdit:active {
+    background-color: rgb(138, 58, 68);
+}
+
 .windowAbsolute {
     position: fixed;
     top: 0;

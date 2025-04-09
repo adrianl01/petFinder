@@ -33,12 +33,12 @@ export function ReportCard() {
   } = useForm();
   const handlerSubmit = (data) => {
     const windowRep = document.getElementById("windowRep");
-    windowRep.style.display = "none";
     const sendData = {
       ...data,
       userEmail,
     };
     sendEmailReport(sendData);
+    windowRep.style.display = "none";
   };
   function Reps(data) {
     return (

@@ -65,6 +65,10 @@ body {
     border: none;
 }
 
+.locationButton:active {
+    background-color: rgb(45, 72, 118);
+}
+
 .infoButton {
     background-color: rgba(0, 168, 132, 1);
     width: 267px;

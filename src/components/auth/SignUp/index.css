@@ -94,6 +94,10 @@
     border-radius: 5px;
 }
 
+.formButton:active {
+    background: rgb(47, 75, 124);
+}
+
 .forgotContainer {
     display: flex;
     align-items: end;
@@ -116,4 +120,12 @@
     color: rgba(90, 143, 236, 1);
     border: none;
     background-color: transparent;
+}
+
+.forgotContainerButton:active {
+    background: rgb(47, 75, 124);
+}
+
+.loginContainerButton:active {
+    background: rgb(47, 75, 124);
 }

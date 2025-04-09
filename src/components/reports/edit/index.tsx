@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEmailLS, getRepByIdFunc, getTokenLS } from "../../../hooks";
 import * as css from "./index.css";
@@ -136,17 +136,19 @@ export function EditReport() {
         <h4 className={css.title2}>
           Si tu mascota a sido encontrada, ya puedes eliminar el reporte
         </h4>
-        <button
-          type="button"
-          className={css.formButtonDelete}
-          onClick={deleteRepHandler}
-        >
-          Eliminar Reporte
-        </button>
+        <Suspense fallback={<div className={css.loading}></div>}>
+          <button
+            type="button"
+            className={css.formButtonDelete}
+            onClick={deleteRepHandler}
+          >
+            Eliminar Reporte
+          </button>
+        </Suspense>
         <button
           type="button"
           className={css.formButtonCancel}
-          onClick={() => nav("/", { replace: false })}
+          onClick={() => window.location.assign("/")}
         >
           Cancelar
         </button>
