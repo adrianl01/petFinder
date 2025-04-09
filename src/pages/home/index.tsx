@@ -2,7 +2,7 @@ import React from "react";
 import * as css from "./index.css";
 import { ReportCard } from "../../components/reportCard";
 import { getUserLocLS } from "../../hooks";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function HomePage() {
   const nav = useNavigate();
