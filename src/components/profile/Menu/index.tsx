@@ -16,21 +16,21 @@ export function Menu() {
   };
   return (
     <div className={css.main}>
-      <h2 className={css.title}>Mis Datos</h2>
+      <h2 className={css.title}>My Personal Data</h2>
       <div className={css.buttons}>
         <button
           type="button"
           className={css.formButtonModData}
           onClick={handleClickData}
         >
-          Modificar Datos Personales
+          Modify Personal Data
         </button>
         <button
           type="button"
           className={css.formButtonModPass}
           onClick={handleClickPassword}
         >
-          Modificar Contraseña
+          Modify Password
         </button>
       </div>
       <EmailButton

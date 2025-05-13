@@ -33,7 +33,7 @@ export function MyReps() {
                 className={css.reportButtonEdit}
                 onClick={() => nav("/edit-report/" + d.id, { replace: true })}
               >
-                Editar
+                Edit
                 <img src="/imgs/pencil.png" />
               </button>
             </div>
@@ -45,7 +45,7 @@ export function MyReps() {
   function MainComp(data) {
     return data.data.length > 0 ? (
       <div className={css.main}>
-        <h2 className={css.title}>Mascotas Reportadas</h2>
+        <h2 className={css.title}>Reported Pets</h2>
         <MyRepsComp repsData={data} />
       </div>
     ) : (

@@ -47,7 +47,7 @@ export function CreateReport() {
       email: userEmail,
     };
     await setNewRepInfo(reportInfo);
-    console.log("hacer cartel que diga que se creó el reporte");
+    console.log("Report created");
   };
 
   const watcher = watch("name");
@@ -61,10 +61,8 @@ export function CreateReport() {
 
   return (
     <div className={css.main}>
-      <h2 className={css.title}>Reportar Mascota</h2>
-      <h4 className={css.title2}>
-        Ingresá la siguiente info para reportar a una mascota perdida
-      </h4>
+      <h2 className={css.title}>Report Pet</h2>
+      <h4 className={css.title2}>Fill in the next data to report a lost pet</h4>
       <form
         className={css.form}
         method="post"
@@ -72,7 +70,7 @@ export function CreateReport() {
       >
         <fieldset className={css.textfield}>
           <label className={css.formEmailLabel}>
-            NOMBRE DE LA MASCOTA
+            PET NAME
             <input
               type="name"
               className={css.name}
@@ -81,7 +79,7 @@ export function CreateReport() {
             />
             {errors.exampleRequired && <span>This field is required</span>}
             <p id="atentionText" className={css.atentionText}>
-              El nombre no puede superar los 15 caractéres
+              The name can't be longer than 15 chars
             </p>
           </label>
         </fieldset>
@@ -93,13 +91,12 @@ export function CreateReport() {
         <fieldset className={css.textfield}>
           <NewMapApp class={css.mapContainer} />
           <h4 className={css.title2}>
-            Buscá un punto de referencia para reportar la mascota. Por ejemplo,
-            la ubicación donde lo viste por última vez.
+            Look for a reference spot on the map,e.g., the last spot you saw it.
           </h4>
         </fieldset>
         <fieldset className={css.textfield}>
           <label className={css.formEmailLabel}>
-            UBICACIÓN
+            LOCATION
             <input
               type="search"
               className={css.search}
@@ -109,18 +106,18 @@ export function CreateReport() {
             {errors.exampleRequired && <span>This field is required</span>}
           </label>
           <h4 className={css.title2}>
-            Escribí el nombre de la ciudad donde se perdió
+            Write the name of the city where he got lost
           </h4>
         </fieldset>
         <button type="submit" className={css.formButtonSubmit}>
-          Reportar Mascota
+          Create Report
         </button>
         <button
           type="button"
           className={css.formButtonCancel}
           onClick={() => navigate("/", { replace: true })}
         >
-          Cancelar
+          Cancel
         </button>
       </form>
     </div>

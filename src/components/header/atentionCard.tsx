@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as css from "./header.css";
 import { useSetRecoilState } from "recoil";
 import { atentionCard } from "../../atoms";
@@ -9,8 +9,7 @@ export function AtentionCard(dataComp) {
     <div id="atentionCard" className={css.atentionCard}>
       <div className={css.atentionCardCont}>
         <p className={css.atentionCardText}>
-          Necesitas iniciar sesión y/o dar tu ubicación actual para realizar
-          esta acción
+          You need to log in and/or enable coords location
         </p>
         <button
           className={css.atentionCardButton}
@@ -18,7 +17,7 @@ export function AtentionCard(dataComp) {
             setAtentionCard(false);
           }}
         >
-          Aceptar
+          Accept
         </button>
       </div>
     </div>

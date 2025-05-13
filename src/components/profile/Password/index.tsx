@@ -23,7 +23,7 @@ export function Password() {
       >
         <fieldset className={css.fieldSet}>
           <label className={css.formNameLabel}>
-            CONTRASEÑA
+            PASSWORD
             <input
               type="password"
               className={css.name}
@@ -32,7 +32,7 @@ export function Password() {
             />
           </label>
           <label className={css.formLocationLabel}>
-            CONFIRMAR CONTRASEÑA
+            REPEAT PASSWORD
             <input
               type="password"
               className={css.location}
@@ -42,7 +42,7 @@ export function Password() {
           </label>
         </fieldset>
         <button type="submit" className={css.formButtonSaveData}>
-          Guardar
+          Save
         </button>
       </form>
     </div>

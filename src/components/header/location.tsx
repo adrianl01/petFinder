@@ -5,8 +5,8 @@ import { getUserLocLS } from "../../hooks";
 export default function Location() {
   const coords = getUserLocLS();
   return coords ? (
-    <div className={css.loc}>Coordenadas Activadas😉📌✔</div>
+    <div className={css.loc}>Coords Enabled📌✔</div>
   ) : (
-    <div className={css.loc}>Coordenadas Desactivadas😨📌❌</div>
+    <div className={css.loc}>Coords Desabled📌❌</div>
   );
 }

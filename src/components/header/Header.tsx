@@ -101,7 +101,7 @@ export function Header() {
             className={css.headerMenuButtonData}
             onClick={handleClickMyData}
           >
-            Mis Datos
+            My Data
           </button>
           {/* -------------------- */}
           <button
@@ -109,7 +109,7 @@ export function Header() {
             className={css.headerMenuButtonMyReports}
             onClick={handleClickMyReps}
           >
-            Mis Mascotas Reportadas
+            My reported Pets
           </button>
           {/* -------------------- */}
           <button
@@ -117,7 +117,7 @@ export function Header() {
             className={css.headerMenuButtonCreateReport}
             onClick={handleClickCreateRep}
           >
-            Reportar Mascota
+            Report Pet
           </button>
         </div>
         <EmailButton

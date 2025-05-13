@@ -26,10 +26,8 @@ export function SignIn() {
   return (
     <div className={css.mainContainer}>
       <div className={css.main}>
-        <h2 className={css.title}>Iniciar Sesión</h2>
-        <h4 className={css.title2}>
-          Ingresá los siguientes datos personales para iniciar sesión
-        </h4>
+        <h2 className={css.title}>Log In</h2>
+        <h4 className={css.title2}>Fill in the next data to log in</h4>
         <form className={css.form} onSubmit={handleSubmit(handlerSubmit)}>
           <fieldset className={css.textfield}>
             <label className={css.formEmailLabel}>
@@ -43,7 +41,7 @@ export function SignIn() {
               {errors.exampleRequired && <span>This field is required</span>}
             </label>
             <label className={css.formEmailLabel}>
-              CONTRASEÑA
+              PASSWORD
               <input
                 type="password"
                 className={css.password}
@@ -54,7 +52,7 @@ export function SignIn() {
             </label>
           </fieldset>
           <button type="submit" className={css.formButton}>
-            Acceder
+            Log In
           </button>
         </form>
         <div className={css.forgotContainer}>
@@ -64,7 +62,7 @@ export function SignIn() {
               navigate("/my-data/modify-password", { replace: true });
             }}
           >
-            Olvidé mi contraseña
+            I forgot my password
           </button>
         </div>
       </div>

@@ -21,14 +21,14 @@ export function SignUp() {
   return (
     <div className={css.mainContainer}>
       <div className={css.main}>
-        <h2 className={css.title}>Registrarse</h2>
+        <h2 className={css.title}>Sign Up</h2>
         <h4 className={css.title2}>
-          Ingresá los siguientes datos personales para poder registrarte
+          Fill in the next data to create an account
         </h4>
         <form className={css.form} onSubmit={handleSubmit(handlerSubmit)}>
           <fieldset className={css.textfield}>
             <label className={css.formEmailLabel}>
-              NOMBRE
+              NAME
               <input
                 type="text"
                 className={css.email}
@@ -38,7 +38,7 @@ export function SignUp() {
               {errors.exampleRequired && <span>This field is required</span>}
             </label>
             <label className={css.formEmailLabel}>
-              LUGAR
+              PLACE
               <input
                 type="text"
                 className={css.email}
@@ -58,7 +58,7 @@ export function SignUp() {
               {errors.exampleRequired && <span>This field is required</span>}
             </label>
             <label className={css.formEmailLabel}>
-              CONTRASEÑA
+              PASSWORD
               <input
                 type="password"
                 className={css.password}
@@ -69,18 +69,18 @@ export function SignUp() {
             </label>
           </fieldset>
           <button type="submit" className={css.formButton}>
-            Crear Cuenta
+            Create account{" "}
           </button>
         </form>
         <div className={css.forgotContainer}>
-          <button
+          {/* <button
             className={css.forgotContainerButton}
             onClick={() => {
               navigate("/my-data/modify-password", { replace: true });
             }}
           >
-            Olvidé mi contraseña
-          </button>
+            Forgot my password
+          </button> */}
         </div>
       </div>
     </div>

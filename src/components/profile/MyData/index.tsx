@@ -17,7 +17,7 @@ export function MyData() {
   };
   return (
     <div className={css.main}>
-      <h2 className={css.title}>Datos Personales</h2>
+      <h2 className={css.title}>Personal Data</h2>
       <form
         className={css.form}
         method="post"
@@ -25,7 +25,7 @@ export function MyData() {
       >
         <fieldset className={css.fieldSet}>
           <label className={css.formNameLabel}>
-            NOMBRE
+            NAME
             <input
               type="text"
               className={css.name}
@@ -34,7 +34,7 @@ export function MyData() {
             />
           </label>
           <label className={css.formLocationLabel}>
-            LOCALIDAD
+            HOMETOWN
             <input
               type="text"
               className={css.location}
@@ -44,7 +44,7 @@ export function MyData() {
           </label>
         </fieldset>
         <button type="submit" className={css.formButtonSaveData}>
-          Guardar
+          Save
         </button>
       </form>
     </div>

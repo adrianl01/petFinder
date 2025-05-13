@@ -37,14 +37,14 @@ export function EmailButton(props) {
           className={props.headerMenuCancelButton}
           onClick={handleClickLogIn}
         >
-          INICIAR SESIÓN
+          LOG IN
         </button>
         <button
           type="button"
           className={props.headerMenuCancelButton}
           onClick={handleClickSignUp}
         >
-          REGISTRARSE
+          REGISTER
         </button>
       </div>
     );

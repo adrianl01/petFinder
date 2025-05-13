@@ -24,12 +24,12 @@ export function HomePage() {
         <div>
           <h2 className={css.homeTitle}>Pet Finder App</h2>
           <h4 className={css.homeTitle2}>
-            Encontrá y reportá mascotas perdidas cerca de tu ubicación
+            Find and report lost pets in your area
           </h4>
         </div>
         <div className={css.homeContainer}>
           <button onClick={locationHandler} className={css.locationButton}>
-            Dar mi ubicación actual
+            Enable current location
           </button>
 
           {/* <button className={css.infoButton}>¿Cómo funciona Pet Finder?</button> */}

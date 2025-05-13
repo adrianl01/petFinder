@@ -9,17 +9,17 @@ export function NoReps() {
   };
   return (
     <div className={css.main}>
-      <h2 className={css.title}>Mascotas Reportadas</h2>
+      <h2 className={css.title}>Reported Pets</h2>
 
       <div className={css.emptyReportContainer}>
-        <h4 className={css.title2}>Aún no reportaste mascotas perdidas</h4>
+        <h4 className={css.title2}>You haven't created any report yet</h4>
         <img className={css.emptyReportImg} src="/imgs/create-report.png" />
         <button
           type="button"
           className={css.emptyReportButton}
           onClick={handleClickCreateRep}
         >
-          Publicar Reporte
+          Create Report
         </button>
       </div>
     </div>

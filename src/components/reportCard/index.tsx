@@ -19,7 +19,7 @@ export function ReportCard() {
     const windowRep = document.getElementById("windowRep");
     windowRep.style.display = "flex";
     const petNameEl = document.getElementById("petNameEl");
-    petNameEl.textContent = "Reportar info de" + " " + name;
+    petNameEl.textContent = "Report info of" + " " + name;
   };
   const closeButtonHandler = (e) => {
     e.preventDefault();
@@ -72,7 +72,7 @@ export function ReportCard() {
   }
   return (
     <div className={css.homeEl}>
-      <h4 className={css.reportsTitle}>Mascotas Perdidas Cerca</h4>
+      <h4 className={css.reportsTitle}>Lost Pets Nearby</h4>
       <Reps petData={data} />
       <div id="windowRep" className={css.windowAbsolute}>
         <div className={css.windowContainer}>
@@ -93,7 +93,7 @@ export function ReportCard() {
           >
             <fieldset className={css.windowTextfield}>
               <label className={css.formEmailLabel}>
-                TU NOMBRE
+                YOUR NAME
                 <input
                   type="text"
                   className={css.windowInputName}
@@ -103,7 +103,7 @@ export function ReportCard() {
                 {errors.exampleRequired && <span>This field is required</span>}
               </label>
               <label className={css.formEmailLabel}>
-                TU TELÉFONO
+                YOUR PHONE
                 <input
                   type="tel"
                   className={css.windowInputPhoneNumber}
@@ -113,7 +113,7 @@ export function ReportCard() {
                 {errors.exampleRequired && <span>This field is required</span>}
               </label>
               <label className={css.formEmailLabel}>
-                ¿DÓNDE LO VISTE?
+                ¿WHERE HAVE YOU SEEN IT?
                 <input
                   type="text"
                   className={css.windowInputLocation}
@@ -124,7 +124,7 @@ export function ReportCard() {
               </label>
             </fieldset>
             <button type="submit" className={css.windowFormButton}>
-              Enviar Información
+              Send to owner
             </button>
           </form>
         </div>

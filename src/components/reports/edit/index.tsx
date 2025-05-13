@@ -77,7 +77,7 @@ export function EditReport() {
   const coordsEdit = { lng: lastRepData.long, lat: lastRepData.lat };
   return (
     <div className={css.main}>
-      <h2 className={css.title}>Editar Reporte de Mascota</h2>
+      <h2 className={css.title}>Edit Pet Report</h2>
       <form
         className={css.form}
         method="post"
@@ -85,7 +85,7 @@ export function EditReport() {
       >
         <fieldset className={css.textfield}>
           <label className={css.formEmailLabel}>
-            NOMBRE DE LA MASCOTA
+            PET NAME
             <input
               type="name"
               className={css.name}
@@ -95,7 +95,7 @@ export function EditReport() {
             />
             {errors.exampleRequired && <span>This field is required</span>}
             <p id="atentionText" className={css.atentionText}>
-              El nombre no puede superar los 15 caractéres
+              The name can't be longer than 15 chars
             </p>
           </label>
         </fieldset>
@@ -110,13 +110,12 @@ export function EditReport() {
         <fieldset className={css.textfield}>
           <NewMapApp class={css.mapContainer} coords={coordsEdit} />
           <h4 className={css.title2}>
-            Buscá un punto de referencia para reportar la mascota. Por ejemplo,
-            la ubicación donde lo viste por última vez.
+            Look for a reference spot on the map,e.g., the last spot you saw it.
           </h4>
         </fieldset>
         <fieldset className={css.textfield}>
           <label className={css.formEmailLabel}>
-            UBICACIÓN
+            LOCATION
             <input
               type="search"
               className={css.search}
@@ -127,14 +126,14 @@ export function EditReport() {
             {errors.exampleRequired && <span>This field is required</span>}
           </label>
           <h4 className={css.title2}>
-            Escribí el nombre de la ciudad donde se perdió
+            Write the name of the city where he got lost
           </h4>
         </fieldset>
         <button type="submit" className={css.formButtonSave}>
-          Guardar Cambios
+          Edit Report
         </button>
         <h4 className={css.title2}>
-          Si tu mascota a sido encontrada, ya puedes eliminar el reporte
+          If your pet has already been found, you can delete this report.
         </h4>
         <Suspense fallback={<div className={css.loading}></div>}>
           <button
@@ -142,7 +141,7 @@ export function EditReport() {
             className={css.formButtonDelete}
             onClick={deleteRepHandler}
           >
-            Eliminar Reporte
+            Delete Report
           </button>
         </Suspense>
         <button
@@ -150,7 +149,7 @@ export function EditReport() {
           className={css.formButtonCancel}
           onClick={() => window.location.assign("/")}
         >
-          Cancelar
+          Cancel
         </button>
       </form>
     </div>
