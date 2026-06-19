@@ -1,16 +1,16 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "../components/Layout";
-import { HomePage } from "../pages/home";
+import { HomePage } from "../app/home";
 import { SignIn } from "../components/auth/SignIn";
 import { SignUp } from "../components/auth/SignUp";
-import { CardsPage } from "../pages/cards";
-import { MyDataPage } from "../pages/my-data/modify-data";
-import { MenuPage } from "../pages/my-data/menu";
-import { EditRepsPage } from "../pages/edit-report";
-import { CreateRepsPage } from "../pages/create-report";
-import { PasswordPage } from "../pages/my-data/modify-password";
-import { MyRepsPage } from "../pages/my-reports";
+import { CardsPage } from "../app/cards";
+import { MyDataPage } from "../app/my-data/modify-data";
+import { MenuPage } from "../app/my-data/menu";
+import { EditRepsPage } from "../app/edit-report";
+import { CreateRepsPage } from "../app/create-report";
+import { PasswordPage } from "../app/my-data/modify-password";
+import { MyRepsPage } from "../app/my-reports";
 
 export function AppRoutes() {
   return (
