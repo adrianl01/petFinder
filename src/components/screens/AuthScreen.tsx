@@ -39,7 +39,7 @@ export default function AuthScreen() {
 
         <div className="mt-8 flex-1">
           {mode === 'login' ? (
-            <form className="space-y-5">
+            <div className="space-y-5">
               <AuthInput
                 label="Email"
                 name="login-email"
@@ -77,9 +77,9 @@ export default function AuthScreen() {
               <button className="w-full rounded-2xl bg-orange-500 py-4 font-bold text-white transition hover:bg-orange-600" onClick={handleSubmit}>
                 Log In
               </button>
-            </form>
+            </div>
           ) : (
-            <form className="space-y-5" autoComplete="off" data-form-type="other">
+            <div className="space-y-5" >
               <AuthInput
                 label="Full name"
                 name="full-name"
@@ -142,7 +142,7 @@ export default function AuthScreen() {
               <button className="w-full rounded-2xl bg-orange-500 py-4 font-bold text-white transition hover:bg-orange-600" onClick={handleSubmit}>
                 Creat Account
               </button>
-            </form>
+            </div>
           )}
 
           <div className="my-8 flex items-center gap-4">
