@@ -7,9 +7,9 @@ return(
 <div className="w-16 h-16 bg-orange-500 rounded-2xl mx-auto flex items-center justify-center text-white text-3xl">
 🐾
 </div>
-<h1 className="text-3xl font-bold mt-4">Bienvenido</h1>
+<h1 className="text-3xl font-bold mt-4">Welcome</h1>
 <p className="text-gray-500 mt-2">
-Ingresá para reportar y recibir alertas.
+Login to create reports and receive alerts
 </p>
 </div>
 
@@ -22,7 +22,7 @@ Iniciar sesión
 </button>
 
 <button className="w-full border py-4 rounded-2xl font-semibold">
-Continuar con Google
+Continue with Google
 </button>
 </div>
 

@@ -31,9 +31,7 @@ export default function ProfileScreen() {
   const token = getToken();
   const [page, setPage] = useState<TargetPage>('hub');
   const [user, setUser] = useState<User>();
-  //   useEffect(() => {
-  //   setUser(Mockuser);
-  // }, []);
+ 
   useEffect(() => {
     if (!token) return;
     async function fetchUser() {

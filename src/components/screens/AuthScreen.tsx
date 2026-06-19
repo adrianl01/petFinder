@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AuthLogo from '@/src/components/auth/AuthLogo';
 import AuthInput from '@/src/components/auth/AuthInput';
 import AuthTabs from '@/src/components/auth/AuthTabs';
@@ -10,14 +10,17 @@ import { createUser, login } from '@/src/lib/api/auth';
 
 export default function AuthScreen() {
   const [mode, setMode] = useState<'login' | 'register'>('login');
-  const [authForm, setAuthForm] = useState({ fullName: '', password: '', confirmPassword: '', email: '' });
+  const [registerForm, setregisterForm] = useState({ fullName: '', password: '', confirmPassword: '', email: '' });
   const [logInForm, setLogInForm] = useState({ password: '', email: '' });
+  useEffect(() => {
+  console.log(registerForm);
+}, [registerForm]);
   const handleSubmit = async () => {
     if (mode == 'login') {
       await login({ email: logInForm.email, password: logInForm.password });
     }
     if (mode == 'register') {
-      await createUser({ email: authForm.email, fullname: authForm.fullName, password: authForm.password });
+      await createUser({ email: registerForm.email, fullname: registerForm.fullName, password: registerForm.password });
     }
   };
 
@@ -32,22 +35,25 @@ export default function AuthScreen() {
 
         <div className="mt-8 flex-1">
           {mode === 'login' ? (
-            <div className="space-y-5">
+            <form className="space-y-5">
               <AuthInput
                 label="Email"
+                name="login-email"
                 type="email"
                 placeholder="tu@email.com"
                 value={logInForm.email}
                 onChange={(e) =>
-                  setAuthForm((prev) => ({
+                  setLogInForm((prev) => ({
                     ...prev,
                     email: e.target.value
                   }))
                 }
+                autoComplete="email"
               />
 
               <AuthInput
                 label="Password"
+                name="login-password"
                 type="password"
                 placeholder="••••••••"
                 value={logInForm.password}
@@ -57,6 +63,7 @@ export default function AuthScreen() {
                     password: e.target.value
                   }))
                 }
+                autoComplete="current-password"
               />
 
               <div className="text-right">
@@ -66,64 +73,72 @@ export default function AuthScreen() {
               <button className="w-full rounded-2xl bg-orange-500 py-4 font-bold text-white transition hover:bg-orange-600" onClick={handleSubmit}>
                 Log In
               </button>
-            </div>
+            </form>
           ) : (
-            <div className="space-y-5">
+            <form className="space-y-5" autoComplete="off" data-form-type="other">
               <AuthInput
                 label="Full name"
+                name="full-name"
                 placeholder="María González"
-                value={authForm.password}
+                value={registerForm.fullName}
                 onChange={(e) =>
-                  setAuthForm((prev) => ({
+                  setregisterForm((prev) => ({
                     ...prev,
-                    password: e.target.value
+                    fullName: e.target.value
                   }))
                 }
+                autoComplete="name"
               />
 
               <AuthInput
                 label="Email"
+                name="new-email"
                 type="email"
                 placeholder="tu@email.com"
-                value={authForm.email}
+                value={registerForm.email}
                 onChange={(e) =>
-                  setAuthForm((prev) => ({
+                  setregisterForm((prev) => ({
                     ...prev,
                     email: e.target.value
                   }))
                 }
+                autoComplete="email"
               />
 
               <AuthInput
                 label="Password"
+                name="new-password-1"
                 type="password"
                 placeholder="••••••••"
-                value={authForm.password}
+                value={registerForm.password}
                 onChange={(e) =>
-                  setAuthForm((prev) => ({
+                  setregisterForm((prev) => ({
                     ...prev,
                     password: e.target.value
                   }))
                 }
+                autoComplete="new-password"
               />
 
               <AuthInput
                 label="Confirm password"
+                name="new-password-2"
                 type="password"
                 placeholder="••••••••"
-                value={authForm.confirmPassword}
+                value={registerForm.confirmPassword}
                 onChange={(e) =>
-                  setAuthForm((prev) => ({
+                  setregisterForm((prev) => ({
                     ...prev,
                     confirmPassword: e.target.value
                   }))
                 }
+                autoComplete="new-password"
               />
 
               <button className="w-full rounded-2xl bg-orange-500 py-4 font-bold text-white transition hover:bg-orange-600" onClick={handleSubmit}>
                 Creat Account
               </button>
-            </div>
+            </form>
           )}
 
           <div className="my-8 flex items-center gap-4">
