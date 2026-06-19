@@ -1,10 +1,10 @@
 import { calculateDistance } from '@/src/lib/calculateDistance';
-import { Report } from '@/src/types/report';
+import { ReportResponse} from '@/src/types/report';
 import { Cat, Dog, Filter, MapPin, PawPrint } from 'lucide-react';
 import { getUserLocation } from '@/src/lib/storage/location';
 
 interface ReportsBottomSheetProps {
-  filteredReports: Report[];
+  filteredReports: ReportResponse[];
 }
 
 export default function ReportsBottomSheet({ filteredReports }: ReportsBottomSheetProps) {
