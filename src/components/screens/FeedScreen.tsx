@@ -18,7 +18,7 @@ import { ReportResponse } from "@/src/types/report";
 
 export default function FeedScreen() {
   const [open, setOpen] = useState(false);
-  const [reports, setReports] = useState<Report[]>([]);
+  const [reports, setReports] = useState<ReportResponse[]>([]);
 
   useEffect(() => {
     const fetchReports = async () => {

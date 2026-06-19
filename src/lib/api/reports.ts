@@ -2,7 +2,7 @@ import { apiFetch } from './client';
 
 import { getUserLocation } from '../storage/location';
 import { uploadImage } from './cloudinary';
-import { CreateReportDto, CreateReportPayload } from '@/src/types/report';
+import { CreateReportDto, CreateReportPayload, ReportResponse } from '@/src/types/report';
 
 export async function getReportsNearMe(radius = 50000) {
   const location = getUserLocation();
@@ -12,7 +12,7 @@ export async function getReportsNearMe(radius = 50000) {
   }
 
   const { latitude, longitude } = location;
-  return apiFetch(`/reports?latitude=${latitude}&longitude=${longitude}&radius=${radius}`) as Promise<Report[]>;
+  return apiFetch(`/reports?latitude=${latitude}&longitude=${longitude}&radius=${radius}`) as Promise<ReportResponse[]>;
 }
 
 export async function getMyReports(token: string) {
