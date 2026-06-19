@@ -13,13 +13,17 @@ export default function AuthScreen() {
   const [registerForm, setregisterForm] = useState({ fullName: '', password: '', confirmPassword: '', email: '' });
   const [logInForm, setLogInForm] = useState({ password: '', email: '' });
   useEffect(() => {
-  console.log(registerForm);
-}, [registerForm]);
+    console.log(registerForm);
+  }, [registerForm]);
   const handleSubmit = async () => {
     if (mode == 'login') {
       await login({ email: logInForm.email, password: logInForm.password });
     }
     if (mode == 'register') {
+      if (registerForm.password !== registerForm.confirmPassword) {
+        alert('Passwords missmatch');
+        return;
+      }
       await createUser({ email: registerForm.email, fullname: registerForm.fullName, password: registerForm.password });
     }
   };
