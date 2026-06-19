@@ -1,3 +1,4 @@
+import { setToken } from '../storage/token';
 import { apiFetch } from './client';
 
 export interface Auth {
@@ -23,11 +24,12 @@ export async function createUser({ fullname, email, password }: Auth) {
 }
 
 export async function login({ email, password }: Login) {
-  return apiFetch<{ jwtRes: string }>('/auth/token', {
+  const res = await apiFetch<{ jwtRes: string }>('/auth/token', {
     method: 'POST',
     body: JSON.stringify({
       email,
       password
     })
   });
+  return setToken(res.jwtRes)
 }
