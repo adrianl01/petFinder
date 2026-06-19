@@ -1,7 +1,7 @@
 "use client";
-import MapScreen from '../components/screens/MapScreen';
+import { redirect } from 'next/navigation';
+
 
 export default function Page() {
-
-  return <MapScreen />;
+  redirect("/map")
 }
