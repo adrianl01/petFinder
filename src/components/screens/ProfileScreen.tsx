@@ -11,6 +11,7 @@ import ReportsContent from '../profile/content/ReportsContent';
 import SettingsContent from '../profile/content/SettingsContent';
 
 import { getToken } from '@/src/lib/storage/token';
+import { useAuth } from '../auth/AuthProvider';
 
 export type TargetPage = 'profile' | 'reports' | 'settings' | 'hub' | 'changePassword' | 'changeLocation';
 
@@ -28,10 +29,10 @@ const Mockuser = {
 };
 
 export default function ProfileScreen() {
-  const token = getToken();
+  const { token } = useAuth();
   const [page, setPage] = useState<TargetPage>('hub');
   const [user, setUser] = useState<User>();
- 
+
   useEffect(() => {
     if (!token) return;
     async function fetchUser() {

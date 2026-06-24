@@ -1,11 +1,11 @@
+import { useAuth } from "@/src/components/auth/AuthProvider";
 import AuthScreen from "@/src/components/screens/AuthScreen";
 import ReportScreen from "@/src/components/screens/ReportScreen";
-import { getToken } from "@/src/lib/storage/token"
-
 
 export default function Home() {
+    const { token } = useAuth();
 
-    if (!getToken()) {
+    if (!token) {
     return <AuthScreen />;
   }
 

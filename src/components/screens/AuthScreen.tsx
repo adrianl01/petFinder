@@ -7,8 +7,10 @@ import AuthTabs from '@/src/components/auth/AuthTabs';
 import GoogleButton from '@/src/components/auth/GoogleButton';
 import BottomNavigation from '../layout/BottomNavigation';
 import { createUser, login } from '@/src/lib/api/auth';
+import { useAuth } from '../auth/AuthProvider';
 
 export default function AuthScreen() {
+  const { login: authLogin } = useAuth();
   const [mode, setMode] = useState<'login' | 'register'>('login');
   const [registerForm, setregisterForm] = useState({ fullName: '', password: '', confirmPassword: '', email: '' });
   const [logInForm, setLogInForm] = useState({ password: '', email: '' });
@@ -17,7 +19,12 @@ export default function AuthScreen() {
   }, [registerForm]);
   const handleSubmit = async () => {
     if (mode == 'login') {
-      await login({ email: logInForm.email, password: logInForm.password });
+      const res = await login({
+        email: logInForm.email,
+        password: logInForm.password
+      });
+
+      authLogin(res.token);
     }
     if (mode == 'register') {
       if (registerForm.password !== registerForm.confirmPassword) {
@@ -79,7 +86,7 @@ export default function AuthScreen() {
               </button>
             </div>
           ) : (
-            <div className="space-y-5" >
+            <div className="space-y-5">
               <AuthInput
                 label="Full name"
                 name="full-name"

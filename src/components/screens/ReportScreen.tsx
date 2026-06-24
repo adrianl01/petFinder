@@ -6,12 +6,12 @@ import Input from '@/src/components/ui/Input';
 import ImageUploader from '@/src/components/report/ImageUploader';
 import SpeciesSelector from '@/src/components/report/SpeciesSelector';
 import PetMapPicker from '@/src/components/report/PetMapPicker';
-import { getToken } from '@/src/lib/storage/token';
 import BottomNavigation from '../layout/BottomNavigation';
 import { createReport } from '@/src/lib/api/reports';
+import { useAuth } from '../auth/AuthProvider';
 
 export default function ReportScreen() {
-  const token = getToken();
+  const { token } = useAuth();
   const [species, setSpecies] = useState('dog');
   const [coords, setCoords] = useState<{ latitude: number; longitude: number } | null>(null);
   const [form, setForm] = useState({ name: '', breed: '', color: '', phoneNumber: '', location: '' });

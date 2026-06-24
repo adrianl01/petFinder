@@ -1,9 +1,11 @@
+import { useAuth } from "@/src/components/auth/AuthProvider";
 import AuthScreen from "@/src/components/screens/AuthScreen";
 import ProfileScreen from "@/src/components/screens/ProfileScreen";
-import { getToken } from "@/src/lib/storage/token"
-export default function Profile() {
 
-  if (!getToken()) {
+export default function Profile() {
+  const { token } = useAuth();
+
+  if (!token) {
     return <AuthScreen />;
   }
 

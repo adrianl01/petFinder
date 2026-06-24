@@ -1,3 +1,4 @@
+import { AuthProvider } from '@/src/components/auth/AuthProvider';
 import "./globals.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -8,7 +9,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+       <AuthProvider>
+          {children}
+        </AuthProvider>
     </html>
   )
 }
