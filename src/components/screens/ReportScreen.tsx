@@ -28,6 +28,8 @@ export default function ReportScreen() {
       return;
     }
 
+    console.log(token)
+
     try {
       await createReport(token, {
         name: form.name,
@@ -152,7 +154,6 @@ export default function ReportScreen() {
         <div className="mx-auto max-w-md p-4">
           <button
             className="flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 py-4 font-bold text-white transition hover:bg-orange-600"
-            type="submit"
             onClick={handleSubmit}
           >
             <Send size={18} />

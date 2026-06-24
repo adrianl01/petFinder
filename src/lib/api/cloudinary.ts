@@ -1,4 +1,5 @@
 export async function uploadImage(file: File, token: string) {
+  console.log(file, token)
   const signatureResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cloudinary/signature`, {
     method: 'POST',
     headers: {
