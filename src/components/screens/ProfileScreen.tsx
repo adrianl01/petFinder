@@ -10,8 +10,8 @@ import ProfileContent from '../profile/content/ProfileContent';
 import ReportsContent from '../profile/content/ReportsContent';
 import SettingsContent from '../profile/content/SettingsContent';
 
-import { getToken } from '@/src/lib/storage/token';
 import { useAuth } from '../auth/AuthProvider';
+import { useReports } from '../report/ReportsProvider';
 
 export type TargetPage = 'profile' | 'reports' | 'settings' | 'hub' | 'changePassword' | 'changeLocation';
 
@@ -30,6 +30,7 @@ const Mockuser = {
 
 export default function ProfileScreen() {
   const { token } = useAuth();
+  const { reports } = useReports();
   const [page, setPage] = useState<TargetPage>('hub');
   const [user, setUser] = useState<User>();
 
@@ -42,10 +43,6 @@ export default function ProfileScreen() {
     fetchUser();
   }, []);
 
-  useEffect(() => {
-    console.log(page);
-  }, [page]);
-
   return (
     <>
       <main className="min-h-screen pb-24 flex flex-col items-center justify-center w-full">
@@ -55,8 +52,15 @@ export default function ProfileScreen() {
             <section className="space-y-3 w-full p-5">
               {token && (
                 <>
-                  <ProfileMenuItem icon={PawPrint} title="Mis reportes" subtitle="3 mascotas publicadas" color="orange" targetPage="reports" setPage={setPage} />
-                  <ProfileMenuItem icon={Lock} title="Configuración" subtitle="Seguridad de tu cuenta" color="emerald" targetPage="settings" setPage={setPage} />
+                  <ProfileMenuItem
+                    icon={PawPrint}
+                    title="My reports"
+                    subtitle={`${reports.length} pets reported`}
+                    color="orange"
+                    targetPage="reports"
+                    setPage={setPage}
+                  />
+                  <ProfileMenuItem icon={Lock} title="Settings" subtitle="Account security" color="emerald" targetPage="settings" setPage={setPage} />
 
                   <div className="pt-4">
                     <ProfileMenuItem icon={LogOut} title="Cerrar sesión" color="red" targetPage="hub" setPage={setPage} />

@@ -15,8 +15,8 @@ export async function getReportsNearMe(radius = 50000) {
   return apiFetch(`/reports?latitude=${latitude}&longitude=${longitude}&radius=${radius}`) as Promise<ReportResponse[]>;
 }
 
-export async function getMyReports(token: string) {
-  return apiFetch('/me/reports', {
+export async function getMyReports(token: string): Promise<ReportResponse[]> {
+  return apiFetch('/reports/me', {
     headers: {
       Authorization: `Bearer ${token}`
     }

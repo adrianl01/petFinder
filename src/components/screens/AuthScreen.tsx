@@ -24,7 +24,7 @@ export default function AuthScreen() {
         password: logInForm.password
       });
 
-      authLogin(res.token);
+      authLogin(res);
     }
     if (mode == 'register') {
       if (registerForm.password !== registerForm.confirmPassword) {

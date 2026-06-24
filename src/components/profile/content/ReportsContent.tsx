@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Cat, Dog, MapPin } from 'lucide-react';
 import PageHeader from '../../layout/PageHeader';
 import { TargetPage } from '../../screens/ProfileScreen';
+import { useReports } from '@/src/hooks/useReports';
 
 interface Props {
   setPage: (page: TargetPage) => void;
@@ -12,24 +13,15 @@ interface Props {
 }
 
 export default function ReportsContent({ setPage, page }: Props) {
-  const reports = [
-    {
-      id: 1,
-      name: 'Rocky',
-      species: 'dog',
-      status: 'lost',
-      breed: 'Pastor Alemán',
-      location: 'Puerto Rico, Misiones'
-    },
-    {
-      id: 2,
-      name: 'Luna',
-      species: 'cat',
-      status: 'found',
-      breed: 'Mestiza',
-      location: 'Posadas, Misiones'
-    }
-  ];
+  const { reports, loading } = useReports(); 
+
+  if (loading) {
+    return <div className="min-h-screen pb-24 flex items-center justify-center w-full">Loading...</div>;
+  }
+
+  if(reports.length == 0){
+    return <div className="min-h-screen pb-24 flex items-center justify-center w-full">You haven't created any report yet</div>;
+  }
 
   return (
     <>
