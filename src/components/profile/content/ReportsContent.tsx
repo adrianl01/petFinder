@@ -2,10 +2,10 @@
 
 import { motion } from 'framer-motion';
 
-import { Cat, Dog, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import PageHeader from '../../layout/PageHeader';
 import { TargetPage } from '../../screens/ProfileScreen';
-import { useReports } from '@/src/hooks/useReports';
+import { useMyReports } from '../../report/ReportsProvider';
 
 interface Props {
   setPage: (page: TargetPage) => void;
@@ -13,13 +13,13 @@ interface Props {
 }
 
 export default function ReportsContent({ setPage, page }: Props) {
-  const { reports, loading } = useReports(); 
+  const { reports, loading } = useMyReports();
 
   if (loading) {
     return <div className="min-h-screen pb-24 flex items-center justify-center w-full">Loading...</div>;
   }
 
-  if(reports.length == 0){
+  if (reports.length == 0) {
     return <div className="min-h-screen pb-24 flex items-center justify-center w-full">You haven't created any report yet</div>;
   }
 
@@ -38,11 +38,7 @@ export default function ReportsContent({ setPage, page }: Props) {
             <div key={report.id} className="rounded-3xl border border-zinc-200 bg-white p-4">
               <div className="flex items-center gap-3">
                 <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${report.status === 'lost' ? 'bg-orange-100' : 'bg-emerald-100'}`}>
-                  {report.species === 'dog' ? (
-                    <Dog className={report.status === 'lost' ? 'text-orange-600' : 'text-emerald-600'} />
-                  ) : (
-                    <Cat className={report.status === 'lost' ? 'text-orange-600' : 'text-emerald-600'} />
-                  )}
+                  <img src={report.imageUrl} className='h-12 w-12 object-cover rounded-2xl'/>
                 </div>
 
                 <div className="flex-1">
@@ -52,7 +48,7 @@ export default function ReportsContent({ setPage, page }: Props) {
 
                   <div className="mt-1 flex items-center gap-1 text-xs text-zinc-500">
                     <MapPin size={12} />
-                    {report.location}
+                    {report.location.location}
                   </div>
                 </div>
 

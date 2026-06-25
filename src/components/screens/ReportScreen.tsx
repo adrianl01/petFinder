@@ -39,7 +39,7 @@ export default function ReportScreen() {
         status: 'lost',
         location: {
           longitude: coords?.longitude || 0,
-          latitude: coords?.longitude || 0,
+          latitude: coords?.latitude || 0,
           location: form.location
         },
         image: selectedFile ?? undefined,

@@ -11,7 +11,7 @@ import ReportsContent from '../profile/content/ReportsContent';
 import SettingsContent from '../profile/content/SettingsContent';
 
 import { useAuth } from '../auth/AuthProvider';
-import { useReports } from '../report/ReportsProvider';
+import { useMyReports } from '../report/ReportsProvider';
 
 export type TargetPage = 'profile' | 'reports' | 'settings' | 'hub' | 'changePassword' | 'changeLocation';
 
@@ -30,7 +30,7 @@ const Mockuser = {
 
 export default function ProfileScreen() {
   const { token } = useAuth();
-  const { reports } = useReports();
+  const { reports } = useMyReports();
   const [page, setPage] = useState<TargetPage>('hub');
   const [user, setUser] = useState<User>();
 

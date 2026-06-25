@@ -16,6 +16,7 @@ export default function MapScreen() {
   useEffect(()=>{
     async function fetchReports() {
           const data = (await getReportsNearMe()) as ReportResponse[];
+          console.log(data)
           setReports(data);
         }
         fetchReports();

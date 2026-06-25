@@ -16,24 +16,16 @@ export async function getReportsNearMe(radius = 50000) {
 }
 
 export async function getMyReports(token: string): Promise<ReportResponse[]> {
-  return apiFetch('/me/reports', {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
+  return apiFetch('/me/reports', { headers: { Authorization: `Bearer ${token}` } });
 }
 
 export async function getReportById(token: string, id: string) {
-  return apiFetch(`/me/reports/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
+  return apiFetch(`/me/reports/${id}`, { headers: { Authorization: `Bearer ${token}` } });
 }
 
 export async function createReport(token: string, data: CreateReportDto) {
   let imageUrl: string | undefined;
-  console.log(token, data)
+  console.log(token, data);
 
   if (data.image) {
     imageUrl = await uploadImage(data.image, token);
@@ -50,8 +42,6 @@ export async function createReport(token: string, data: CreateReportDto) {
     isActive: data.isActive,
     phoneNumber: data.phoneNumber
   };
-
-  console.log(payload)
 
   return apiFetch('/reports', {
     method: 'POST',

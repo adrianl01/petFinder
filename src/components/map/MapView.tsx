@@ -65,7 +65,10 @@ export default function MapView({ reports }: Props) {
 
     mapRef.current = map;
 
-    return () => map.remove();
+    return () => {
+      map.remove();
+      mapRef.current = null;
+    };
   }, []);
 
   useEffect(() => {

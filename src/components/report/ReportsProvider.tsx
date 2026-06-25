@@ -53,7 +53,7 @@ export function ReportsProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useReports() {
+export function useMyReports() {
   const context = useContext(ReportsContext);
 
   if (!context) {
