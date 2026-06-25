@@ -1,5 +1,5 @@
 'use client';
-
+import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -100,7 +100,13 @@ export default function MapView({ reports }: Props) {
   }, [reports]);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="h-full w-full"
+    >
       <div ref={mapContainerRef} className="h-full w-full" />
       <button
         onClick={handleLocateUser}
@@ -122,6 +128,6 @@ export default function MapView({ reports }: Props) {
       />
 
       <ReportDetailsModal report={detailsReport} onClose={() => setDetailsReport(null)} />
-    </>
+    </motion.div>
   );
 }
