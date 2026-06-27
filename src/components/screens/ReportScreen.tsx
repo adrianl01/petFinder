@@ -150,7 +150,7 @@ export default function ReportScreen() {
         </div>
       </div>
 
-      <div className="fixed bottom-16 left-0 right-0 border-t border-zinc-200 bg-white z-10">
+      <div className="fixed bottom-16 left-0 right-0 border-t border-zinc-200 bg-white z-10 max-w-[500px]">
         <div className="mx-auto max-w-md p-4">
           <button
             className="flex w-full items-center justify-center gap-2 rounded-2xl bg-orange-500 py-4 font-bold text-white transition hover:bg-orange-600"

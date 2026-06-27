@@ -100,13 +100,7 @@ export default function MapView({ reports }: Props) {
   }, [reports]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 0 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="h-full w-full"
-    >
+    <motion.div initial={{ opacity: 0, y: 0 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }} className="h-full w-full">
       <div ref={mapContainerRef} className="h-full w-full" />
       <button
         onClick={handleLocateUser}

@@ -104,14 +104,14 @@ export default function PetMapPicker({ onLocationSelect }: Props) {
           </div>
 
           <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-zinc-500">Ubicación seleccionada</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-zinc-500">Selected location</p>
 
             {coords ? (
               <p className="mt-1 font-semibold text-zinc-900">
                 {coords.latitude.toFixed(6)}, {coords.longitude.toFixed(6)}
               </p>
             ) : (
-              <p className="mt-1 text-sm text-zinc-500">Tocá el mapa para marcar dónde fue vista la mascota.</p>
+              <p className="mt-1 text-sm text-zinc-500">Tap the map to mark where the pet was seen.</p>
             )}
           </div>
         </div>
