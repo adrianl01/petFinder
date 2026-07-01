@@ -8,9 +8,8 @@ import { TargetPage } from '../../screens/ProfileScreen';
 import { useMyReports, ReportsProvider } from '../../report/ReportsProvider';
 import LoadingOverlay from '../../LoadingOverlay';
 import { useState } from 'react';
-import { deleteReport } from '@/src/lib/api/reports';
+import { deleteReport, updateReport } from '@/src/lib/api/reports';
 import { useAuth } from '../../auth/AuthProvider';
-
 
 interface Props {
   setPage: (page: TargetPage) => void;
@@ -28,9 +27,14 @@ export default function ReportsContent({ setPage, page }: Props) {
     setPage('editReport');
   };
   async function handleDelete(token: string, reportId: number) {
-    const confirmed = window.confirm('Are you sure you want to delete this report?');
+    const confirmed = window.confirm('Are you sure you want to delete this report?. This action cannot be undone.');
     if (!confirmed) return;
-    await deleteReport(token, reportId);
+    const report = reports.find((r) => r.id === reportId);
+    if (!report) return;
+    await updateReport(token, reportId, {
+      ...report,
+      isActive: false
+    });
 
     await refreshReports();
   }

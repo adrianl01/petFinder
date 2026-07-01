@@ -11,7 +11,7 @@ export interface CreateReportDto {
     location: string;
   };
   image?: File;
-  isActive: true;
+  isActive: boolean;
 }
 
 export interface CreateReportPayload {
@@ -27,7 +27,7 @@ export interface CreateReportPayload {
     location: string;
   };
   imageUrl?: string;
-  isActive: true;
+  isActive: boolean;
 }
 
 export interface ReportResponse {
@@ -44,7 +44,7 @@ export interface ReportResponse {
     location: string;
   };
   imageUrl?: string;
-  isActive: true;
+  isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
