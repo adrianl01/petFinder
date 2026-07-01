@@ -8,15 +8,16 @@ import GoogleButton from '@/src/components/auth/GoogleButton';
 import BottomNavigation from '../layout/BottomNavigation';
 import { createUser, login } from '@/src/lib/api/auth';
 import { useAuth } from '../auth/AuthProvider';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = { title: 'Register or Login' };
 
 export default function AuthScreen() {
   const { login: authLogin } = useAuth();
   const [mode, setMode] = useState<'login' | 'register'>('login');
   const [registerForm, setregisterForm] = useState({ fullName: '', password: '', confirmPassword: '', email: '' });
   const [logInForm, setLogInForm] = useState({ password: '', email: '' });
-  useEffect(() => {
-    console.log(registerForm);
-  }, [registerForm]);
+
   const handleSubmit = async () => {
     if (mode == 'login') {
       const res = await login({

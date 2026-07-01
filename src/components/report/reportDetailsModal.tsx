@@ -145,12 +145,6 @@ export default function ReportDetailsModal({ report, onClose }: Props) {
 
                 <div className="flex flex-1 items-center gap-3 rounded-2xl border border-black/10 bg-white p-4">
                   <Clock3 size={18} className="text-[#E8521A]" />
-
-                  <div>
-                    <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#706F6B]">Estado</p>
-
-                    <p className="font-bold">{report.isActive ? 'Active' : 'Closed'}</p>
-                  </div>
                 </div>
               </div>
             </section>

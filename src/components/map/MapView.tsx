@@ -18,10 +18,7 @@ let DEFAULT_CENTER: [number, number] = [-58.3816, -34.6037];
 
 export default function MapView({ reports }: Props) {
   const location = getUserLocation();
-  if (location) {
-    DEFAULT_CENTER[0] = location.longitude;
-    DEFAULT_CENTER[1] = location.latitude;
-  }
+  const center: [number, number] = location ? [location.longitude, location.latitude] : DEFAULT_CENTER;
   const [isLocated, setIsLocated] = useState(false);
   const [previewReport, setPreviewReport] = useState<ReportResponse | null>(null);
   const [detailsReport, setDetailsReport] = useState<ReportResponse | null>(null);
@@ -53,7 +50,7 @@ export default function MapView({ reports }: Props) {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/light-v11',
-      center: DEFAULT_CENTER,
+      center: center,
       zoom: 13
     });
 

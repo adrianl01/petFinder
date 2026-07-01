@@ -9,9 +9,11 @@ export async function apiFetch<T>(endpoint: string, options?: RequestInit): Prom
     }
   });
 
+  const data = await response.json();
+
   if (!response.ok) {
-    throw new Error(`Request failed: ${response.status}`);
+    throw new Error(data.message || 'Request failed');
   }
 
-  return response.json();
+  return data;
 }

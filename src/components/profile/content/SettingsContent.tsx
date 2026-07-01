@@ -16,9 +16,6 @@ interface Props {
 }
 
 export default function SettingsContent({ page, setPage }: Props) {
-  useEffect(() => {
-    console.log("settings",page);
-  }, [page]);
 
   const settings: { icon: typeof Lock; title: string; page: TargetPage }[] = [
     {

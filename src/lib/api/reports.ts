@@ -19,13 +19,12 @@ export async function getMyReports(token: string): Promise<ReportResponse[]> {
   return apiFetch('/me/reports', { headers: { Authorization: `Bearer ${token}` } });
 }
 
-export async function getReportById(token: string, id: string) {
+export async function getReportById(token: string, id: number) {
   return apiFetch(`/me/reports/${id}`, { headers: { Authorization: `Bearer ${token}` } });
 }
 
 export async function createReport(token: string, data: CreateReportDto) {
   let imageUrl: string | undefined;
-  console.log(token, data);
 
   if (data.image) {
     imageUrl = await uploadImage(data.image, token);
@@ -52,17 +51,35 @@ export async function createReport(token: string, data: CreateReportDto) {
   });
 }
 
-export async function updateReport(token: string, reportId: string, data: Report) {
+export async function updateReport(token: string, reportId: number, data: CreateReportDto) {
+  let imageUrl: string | undefined;
+
+  if (data.image) {
+    imageUrl = await uploadImage(data.image, token);
+  }
+
+  const payload: CreateReportPayload = {
+    name: data.name,
+    species: data.species,
+    breed: data.breed,
+    color: data.color,
+    status: data.status,
+    location: data.location,
+    imageUrl,
+    isActive: data.isActive,
+    phoneNumber: data.phoneNumber
+  };
+
   return apiFetch(`/me/reports/${reportId}`, {
     method: 'PATCH',
     headers: {
       Authorization: `Bearer ${token}`
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(payload)
   });
 }
 
-export async function deleteReport(token: string, reportId: string) {
+export async function deleteReport(token: string, reportId: number) {
   return apiFetch(`/me/reports/${reportId}`, {
     method: 'DELETE',
     headers: {

@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { getToken, setToken, removeToken } from '@/src/lib/storage/token';
+import LoadingOverlay from '../LoadingOverlay';
 
 interface AuthContextType {
   token: string | null;
@@ -31,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   if (loading) {
-    return null;
+    return <LoadingOverlay />;
   }
 
   return <AuthContext.Provider value={{ token, login, logout }}>{children}</AuthContext.Provider>;
@@ -39,7 +40,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  
+
   if (!context) {
     throw new Error('useAuth must be used inside AuthProvider');
   }

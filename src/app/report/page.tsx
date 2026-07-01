@@ -1,12 +1,15 @@
-"use client"
-import { useAuth } from "@/src/components/auth/AuthProvider";
-import AuthScreen from "@/src/components/screens/AuthScreen";
-import ReportScreen from "@/src/components/screens/ReportScreen";
+'use client';
+import { useAuth } from '@/src/components/auth/AuthProvider';
+import AuthScreen from '@/src/components/screens/AuthScreen';
+import ReportScreen from '@/src/components/screens/ReportScreen';
+import { Metadata } from 'next';
 
-export default function Home() {
-    const { token } = useAuth();
+export const metadata: Metadata = { title: 'Report' };
 
-    if (!token) {
+export default function Report() {
+  const { token } = useAuth();
+
+  if (!token) {
     return <AuthScreen />;
   }
 
